@@ -1,0 +1,43 @@
+﻿<Page x:Class="msix_catalog_app.Views.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:viewModels="clr-namespace:msix_catalog_app.ViewModels"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MSIX Catalog">
+
+
+    <Page.Resources>
+        <!-- You can implement your own BooleanToVisibilityConverter but there is one already implemented. So the next line creates an instance of the BooleanToVisibilityConverter that you will be able to reference with the specified key -->
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Page.Resources>
+
+    <StackPanel HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Orientation="Vertical">
+        <TextBlock Margin="24"
+                   HorizontalAlignment="Center"
+                   FontSize="48"
+                   Text="MSIX Catalog" />
+        <iconPacks:PackIconMaterial Width="128"
+                                    Height="128"
+                                    HorizontalAlignment="Center"
+                                    Foreground="{DynamicResource AccentBaseColorBrush}"
+                                    Kind="PackageVariant" />
+
+        <TextBlock Text="Loading packages..." HorizontalAlignment="Center" FontSize="20" Visibility="{Binding PackagesLoading, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        <StackPanel Orientation="Horizontal" Margin="12" Visibility="{Binding PackagesLoaded, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <TextBlock Text=" Inspect the " FontSize="20" />
+            <TextBlock  HorizontalAlignment="Left" Text="{Binding TotalPackages}" FontSize="20" FontWeight="ExtraBold" />
+            <TextBlock Text=" packages available in this machine. " FontSize="20" />
+            <TextBlock FontSize="20">
+                <Hyperlink Command="{Binding RefreshCommand}">
+                    <TextBlock Text="Refresh" />
+                </Hyperlink>
+            </TextBlock>
+        </StackPanel>
+    </StackPanel>
+</Page>
