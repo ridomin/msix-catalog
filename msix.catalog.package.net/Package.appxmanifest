@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" IgnorableNamespaces="uap rescap">
-  <Identity Name="msix.catalog" Publisher="CN=Ricardo Minguez, O=Ricardo Minguez, L=Redmond, S=Washington, C=US" Version="0.0.21.0" />
+  <Identity Name="18656RidoMin.MSIXCatalog" Publisher="CN=FD784322-3D44-4DA4-9F73-0E23D5DF0893" Version="0.0.23.0" />
   <Properties>
-    <DisplayName>msix.catalog</DisplayName>
-    <PublisherDisplayName>Microsoft</PublisherDisplayName>
+    <DisplayName>MSIX Catalog</DisplayName>
+    <PublisherDisplayName>ridomin</PublisherDisplayName>
     <Logo>Images\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="$targetentrypoint$">
-      <uap:VisualElements DisplayName="msix.catalog" Description="msix.catalog.package" BackgroundColor="transparent" Square150x150Logo="Images\Square150x150Logo.png" Square44x44Logo="Images\Square44x44Logo.png">
+      <uap:VisualElements DisplayName="MSIX Catalog" Description="msix.catalog.package" BackgroundColor="transparent" Square150x150Logo="Images\Square150x150Logo.png" Square44x44Logo="Images\Square44x44Logo.png">
         <uap:DefaultTile Square310x310Logo="Images\LargeTile.png" Wide310x150Logo="Images\WideTile.png" Square71x71Logo="Images\SmallTile.png">
         </uap:DefaultTile>
         <uap:SplashScreen Image="Images\SplashScreen.png" />

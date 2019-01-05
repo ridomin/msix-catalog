@@ -39,11 +39,10 @@
     <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <EntryPointProjectUniqueName>..\msix.catalog.app\msix.catalog.app.net.csproj</EntryPointProjectUniqueName>
-    <PackageCertificateThumbprint>AF227A682A7A39B3E21740C6C42C27E56312D3D8</PackageCertificateThumbprint>
     <GenerateAppInstallerFile>True</GenerateAppInstallerFile>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
-    <AppInstallerUri>https://appxserver.azurewebsites.net/apps/msix.catalog</AppInstallerUri>
+    <AppInstallerUri>https://msix-catalog.azurewebsites.net/AppxPackages</AppInstallerUri>
     <AppInstallerUpdateFrequency>1</AppInstallerUpdateFrequency>
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
     <AppxPackageSigningEnabled>true</AppxPackageSigningEnabled>
@@ -82,6 +81,7 @@
     <Content Include="Images\Square44x44Logo.targetsize-48.png" />
     <Content Include="Images\StoreLogo.scale-200.png" />
     <Content Include="Images\WideTile.scale-200.png" />
+    <None Include="Package.StoreAssociation.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\msix.catalog.app\msix.catalog.app.net.csproj" />
