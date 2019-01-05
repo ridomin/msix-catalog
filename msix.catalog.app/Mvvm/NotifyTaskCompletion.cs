@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace msix_catalog_app.Mvvm
+namespace msix.catalog.app.Mvvm
 {
     public sealed class NotifyTaskCompletion<TResult> : INotifyPropertyChanged
     {

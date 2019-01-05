@@ -1,4 +1,4 @@
-﻿using msix_catalog_lib;
+﻿using msix.catalog.lib;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +10,7 @@ using System.Xml.Linq;
 using Windows.ApplicationModel;
 using Windows.UI.Xaml.Media.Imaging;
 
-namespace msix_catalog_app.ViewModels
+namespace msix.catalog.app.ViewModels
 {
     public class AboutViewModel
     {

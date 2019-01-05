@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace msix_catalog_app
+namespace msix.catalog.app
 {
     /// <summary>
     /// Interaction logic for App.xaml

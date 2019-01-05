@@ -1,5 +1,5 @@
 ﻿using MahApps.Metro.Controls;
-using msix_catalog_app.ViewModels;
+using msix.catalog.app.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace msix_catalog_app
+namespace msix.catalog.app
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

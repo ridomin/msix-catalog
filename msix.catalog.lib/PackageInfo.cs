@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace msix_catalog_lib
+namespace msix.catalog.lib
 {
     public class PackageInfo
     {

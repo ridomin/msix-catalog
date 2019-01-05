@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace msix_catalog_app.Mvvm
+namespace msix.catalog.app.Mvvm
 {
     public abstract class BindableBase : INotifyPropertyChanged
     {

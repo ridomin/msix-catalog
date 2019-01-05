@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace msix_catalog_app.Navigation
+namespace msix.catalog.app.Navigation
 {
     public static class Navigation
     {

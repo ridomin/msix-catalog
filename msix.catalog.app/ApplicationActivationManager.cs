@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace msix_catalog_app
+namespace msix.catalog.app
 {
 
     public enum ActivateOptions

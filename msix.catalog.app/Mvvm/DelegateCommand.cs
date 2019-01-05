@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace msix_catalog_app.Mvvm
+namespace msix.catalog.app.Mvvm
 {
     internal class DelegateCommand<T> : ICommand
     {
