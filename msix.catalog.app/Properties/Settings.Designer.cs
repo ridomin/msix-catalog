@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace msix_catalog_app.Properties {
+namespace msix.catalog.app.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

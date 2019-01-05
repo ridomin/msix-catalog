@@ -7,7 +7,7 @@ using System.IO;
 using System.Xml.Linq;
 using System.Threading.Tasks;
 
-namespace msix_catalog_lib
+namespace msix.catalog.lib
 {
     public class PackageRepository
     {        

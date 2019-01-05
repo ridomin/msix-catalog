@@ -7,7 +7,7 @@ using Windows.ApplicationModel;
 using System.Xml.Linq;
 using System.Reflection;
 
-namespace msix_catalog_lib
+namespace msix.catalog.lib
 {
     public class ThisAppVersionInfo
     {

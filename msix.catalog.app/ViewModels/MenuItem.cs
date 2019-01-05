@@ -1,4 +1,4 @@
-﻿using msix_catalog_app.Mvvm;
+﻿using msix.catalog.app.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace msix_catalog_app.ViewModels
+namespace msix.catalog.app.ViewModels
 {
     public class MenuItem : BindableBase
     {

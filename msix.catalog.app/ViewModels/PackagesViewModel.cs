@@ -1,5 +1,5 @@
-﻿using msix_catalog_app.Mvvm;
-using msix_catalog_lib;
+﻿using msix.catalog.app.Mvvm;
+using msix.catalog.lib;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Input;
 
-namespace msix_catalog_app.ViewModels
+namespace msix.catalog.app.ViewModels
 {
     public class PackagesViewModel : ViewModelBase
     {

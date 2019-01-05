@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:vm="clr-namespace:msix_catalog_app.ViewModels">
+                    xmlns:vm="clr-namespace:msix.catalog.app.ViewModels">
     <DataTemplate x:Key="PackageInfoTemplate" DataType="{x:Type vm:PackageInfoViewModel}">
         <Grid>
             <Grid.RowDefinitions>
