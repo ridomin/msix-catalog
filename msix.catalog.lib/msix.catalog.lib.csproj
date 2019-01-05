@@ -10,7 +10,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Reference Include="Windows">
+	  <PackageReference Include="OSVersionHelper" Version="1.0.8" />
+	</ItemGroup>
+
+	<ItemGroup>
+    <PackageReference Include="System.Runtime.WindowsRuntime" Version="4.6.0-preview.18619.1" />
+    <Reference Include="Windows">
 			<HintPath>$(MSBuildProgramFiles32)\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd</HintPath>
 			<Private>False</Private>
 		</Reference>
