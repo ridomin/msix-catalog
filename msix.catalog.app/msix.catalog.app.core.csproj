@@ -7,7 +7,7 @@
     <AssemblyName>msix.catalog.app</AssemblyName>
     <UseWPF>true</UseWPF>
     <PackAsTool>true</PackAsTool>
-    <ToolCommandName>msix.catalog</ToolCommandName>
+    <ToolCommandName>msix-catalog</ToolCommandName>
     <Version>0.1.1</Version>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <PackageId>dotnet-msix-catalog</PackageId>
