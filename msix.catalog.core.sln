@@ -3,16 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28315.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "msix.catalog.app.net", "msix.catalog.app\msix.catalog.app.core.csproj", "{66256E0C-6318-4D75-9B39-2B4FAD867A94}"
-EndProject
-Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "msix.catalog.package.net", "msix.catalog.package.core\msix.catalog.package.core.wapproj", "{79223A6C-F495-4C85-8543-FADEAFF92526}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "msix.catalog.app.core", "msix.catalog.app\msix.catalog.app.core.csproj", "{66256E0C-6318-4D75-9B39-2B4FAD867A94}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EFA479FB-8E5B-4527-904F-9DEF9F3E4E6E}"
 	ProjectSection(SolutionItems) = preProject
 		nuget.config = nuget.config
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "msix.catalog.lib", "msix.catalog.lib\msix.catalog.lib.csproj", "{95860CEA-AFC0-42E7-A02F-CAC8857613F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "msix.catalog.lib", "msix.catalog.lib\msix.catalog.lib.csproj", "{95860CEA-AFC0-42E7-A02F-CAC8857613F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,24 +34,6 @@ Global
 		{66256E0C-6318-4D75-9B39-2B4FAD867A94}.Release|x64.Build.0 = Release|Any CPU
 		{66256E0C-6318-4D75-9B39-2B4FAD867A94}.Release|x86.ActiveCfg = Release|Any CPU
 		{66256E0C-6318-4D75-9B39-2B4FAD867A94}.Release|x86.Build.0 = Release|Any CPU
-		{79223A6C-F495-4C85-8543-FADEAFF92526}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{79223A6C-F495-4C85-8543-FADEAFF92526}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{79223A6C-F495-4C85-8543-FADEAFF92526}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{79223A6C-F495-4C85-8543-FADEAFF92526}.Debug|x64.ActiveCfg = Debug|x64
-		{79223A6C-F495-4C85-8543-FADEAFF92526}.Debug|x64.Build.0 = Debug|x64
-		{79223A6C-F495-4C85-8543-FADEAFF92526}.Debug|x64.Deploy.0 = Debug|x64
-		{79223A6C-F495-4C85-8543-FADEAFF92526}.Debug|x86.ActiveCfg = Debug|x86
-		{79223A6C-F495-4C85-8543-FADEAFF92526}.Debug|x86.Build.0 = Debug|x86
-		{79223A6C-F495-4C85-8543-FADEAFF92526}.Debug|x86.Deploy.0 = Debug|x86
-		{79223A6C-F495-4C85-8543-FADEAFF92526}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{79223A6C-F495-4C85-8543-FADEAFF92526}.Release|Any CPU.Build.0 = Release|Any CPU
-		{79223A6C-F495-4C85-8543-FADEAFF92526}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{79223A6C-F495-4C85-8543-FADEAFF92526}.Release|x64.ActiveCfg = Release|x64
-		{79223A6C-F495-4C85-8543-FADEAFF92526}.Release|x64.Build.0 = Release|x64
-		{79223A6C-F495-4C85-8543-FADEAFF92526}.Release|x64.Deploy.0 = Release|x64
-		{79223A6C-F495-4C85-8543-FADEAFF92526}.Release|x86.ActiveCfg = Release|x86
-		{79223A6C-F495-4C85-8543-FADEAFF92526}.Release|x86.Build.0 = Release|x86
-		{79223A6C-F495-4C85-8543-FADEAFF92526}.Release|x86.Deploy.0 = Release|x86
 		{95860CEA-AFC0-42E7-A02F-CAC8857613F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{95860CEA-AFC0-42E7-A02F-CAC8857613F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95860CEA-AFC0-42E7-A02F-CAC8857613F0}.Debug|x64.ActiveCfg = Debug|Any CPU
