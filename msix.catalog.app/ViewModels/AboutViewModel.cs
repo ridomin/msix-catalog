@@ -7,8 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 using System.Xml.Linq;
-using Windows.ApplicationModel;
-using Windows.UI.Xaml.Media.Imaging;
 
 namespace msix.catalog.app.ViewModels
 {
