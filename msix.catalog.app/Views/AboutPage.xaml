@@ -18,7 +18,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
-            <RowDefinition />
         </Grid.RowDefinitions>
         <iconPacks:PackIconFontAwesome Grid.Row="0"
                                        Width="48"
@@ -37,15 +36,14 @@
         <StackPanel Grid.Row="1"  Orientation="Vertical" Margin="10" HorizontalAlignment="Left">
             <TextBlock Text="{Binding VersionString}"  FontSize="16"/>
             <TextBlock Text="{Binding PublisherDisplayName}"  />
-            <TextBlock Text="{Binding InstallLocation}" MaxWidth="500" TextWrapping="WrapWithOverflow"/>
-            <Border BorderBrush="Black" Padding="5">
+            <TextBlock Text="{Binding InstallLocation}" TextWrapping="WrapWithOverflow"/>
+            <TextBlock Text="{Binding DotNetFlavor}" />
+            <TextBlock Text="{Binding StoreInfo}" />
+            <TextBlock Text="{Binding InstalledOn}" />
+            <TextBlock Text="{Binding MyVersion}"  />
+            <Border BorderBrush="DarkGray" Padding="5" Margin="5">
                 <TextBlock Text="{Binding  Metadata}" />
             </Border>
-            <TextBlock Text="{Binding StoreInfo}" />
-        </StackPanel>
-        <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Vertical">
-            <TextBlock Text="{Binding InstalledOn}" FontSize="12" />
-            <TextBlock Text="{Binding MyVersion}" FontSize="12" />
         </StackPanel>
 
     </Grid>

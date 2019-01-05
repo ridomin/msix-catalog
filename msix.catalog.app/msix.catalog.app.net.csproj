@@ -70,9 +70,6 @@
     <PackageReference Include="Microsoft.ApplicationInsights.WindowsServer">
       <Version>2.8.1</Version>
     </PackageReference>
-    <PackageReference Include="System.Runtime.WindowsRuntime">
-      <Version>4.6.0-preview.18619.1</Version>
-    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -80,7 +77,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ApplicationActivationManager.cs" />
-    <Compile Include="ExecutionMode.cs" />
     <Compile Include="Mvvm\BindableBase.cs" />
     <Compile Include="Mvvm\DelegateCommand.cs" />
     <Compile Include="Mvvm\NotifyTaskCompletion.cs" />
