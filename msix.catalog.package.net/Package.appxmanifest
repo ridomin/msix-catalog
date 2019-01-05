@@ -3,7 +3,7 @@
   <Identity Name="18656RidoMin.MSIXCatalog" Publisher="CN=FD784322-3D44-4DA4-9F73-0E23D5DF0893" Version="0.0.23.0" />
   <Properties>
     <DisplayName>MSIX Catalog</DisplayName>
-    <PublisherDisplayName>ridomin</PublisherDisplayName>
+    <PublisherDisplayName>Rido Min</PublisherDisplayName>
     <Logo>Images\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
