@@ -42,7 +42,7 @@ namespace msix.catalog.app.ViewModels
 
 			RefreshCommand = new DelegateCommand<object>(Refresh, (o) => { return true; });
 
-			AllPackages = new NotifyTaskCompletion<IList<PackageInfo>>(PackageRepository.LoadAllInstalledApps());
+			AllPackages = new NotifyTaskCompletion<IList<PackageInfo>>(PackageRepository.LoadAllInstalledAppsAsync());
 			AllPackages.PropertyChanged += AllPackages_PropertyChanged;
 		}
 
@@ -71,7 +71,7 @@ namespace msix.catalog.app.ViewModels
 
 		private void Refresh(object o)
 		{
-            AllPackages = new NotifyTaskCompletion<IList<PackageInfo>>(PackageRepository.LoadAllInstalledApps());
+            AllPackages = new NotifyTaskCompletion<IList<PackageInfo>>(PackageRepository.LoadAllInstalledAppsAsync());
             AllPackages.PropertyChanged += AllPackages_PropertyChanged;
         }
 
