@@ -71,24 +71,24 @@ namespace msix.catalog.lib
         public static string GetStoreInfo()
         {
             var res = "Store API not available ";
-            //if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Services.Store.StoreContext"))
-            //{
-            //    var ctx = Windows.Services.Store.StoreContext.GetDefault();
-            //    var lic = ctx.GetStoreProductForCurrentAppAsync().AsTask().Result;
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Services.Store.StoreContext"))
+            {
+                var ctx = Windows.Services.Store.StoreContext.GetDefault();
+                var lic = ctx.GetStoreProductForCurrentAppAsync().AsTask().Result;
 
-            //    if (lic == null)
-            //    {
-            //        res = "License is null";
-            //    }
-            //    else if (lic.Product == null)
-            //    {
-            //        res = "License Product is null:" + lic.ExtendedError.Message;
-            //    }
-            //    else
-            //    {
-            //        res = lic.Product.LinkUri.ToString();
-            //    }
-            //}
+                if (lic == null)
+                {
+                    res = "License is null";
+                }
+                else if (lic.Product == null)
+                {
+                    res = "License Product is null:" + lic.ExtendedError.Message;
+                }
+                else
+                {
+                    res = lic.Product.LinkUri.ToString();
+                }
+            }
             return res;
         }
 
