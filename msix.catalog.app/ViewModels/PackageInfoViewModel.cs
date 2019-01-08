@@ -1,20 +1,15 @@
-﻿using msix.catalog.app.Mvvm;
-using msix.catalog.lib;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Xml.Linq;
+using msix.catalog.app.Mvvm;
+using msix.catalog.lib;
 
 namespace msix.catalog.app.ViewModels
 {
     public class PackageInfoViewModel : BindableBase
     {
-        PackageInfo _packageInfo;
         public ICommand OpenCommand { get; private set; }
         public ICommand ViewManifestCommand { get; private set; }
         public ICommand OpenFolderCommand { get; private set; }
@@ -22,43 +17,30 @@ namespace msix.catalog.app.ViewModels
         public PackageInfoViewModel() : this(
             new PackageInfo() { PackageName = "Test Package", Author = "Rido", PFN = "MyPFN" })
         {
-
         }
 
         public PackageInfoViewModel(PackageInfo packageInfo)
         {
-            _packageInfo = packageInfo;
-            OpenCommand = new DelegateCommand<object>(OpenApp, (o) => { return true; });
-            ViewManifestCommand = new DelegateCommand<object>(ViewManifest, (o) => { return true; });
-            OpenFolderCommand = new DelegateCommand<object>(OpenFolder, (o) => { return true; });
+            PackageInfo = packageInfo;
+            OpenCommand = new DelegateCommand<PackageInfoViewModel>(OpenApp, (o) => { return !string.IsNullOrWhiteSpace(packageInfo.PFN); } );
+            ViewManifestCommand = new DelegateCommand<PackageInfoViewModel>(ViewManifest);
+            OpenFolderCommand = new DelegateCommand<PackageInfoViewModel>(OpenFolder);
         }
 
-        public PackageInfo PackageInfo
+        public PackageInfo PackageInfo { get; private set; }
+
+        public void OpenApp(PackageInfoViewModel package)
         {
-            get
-            {
-                return _packageInfo;
-            }
-            private set
-            {
-                _packageInfo = value;
-            }
-        }
-               
-        public void OpenApp(object package)
-        {
-            var pi = package as PackageInfoViewModel;
-            uint res = PackageActivator.StartApp(pi.PackageInfo.PFN);
+            uint res = PackageActivator.StartApp(package.PackageInfo.PFN);
 
             App.TelemetryClient.TrackEvent("OpenApp",
-                new Dictionary<string, string> { { "AppToOpen", pi.PackageInfo.PFN }, { "opened", (res>0).ToString()} },
+                new Dictionary<string, string> { { "AppToOpen", package.PackageInfo.PFN }, { "opened", (res>0).ToString()} },
                 null);
         }
        
-        public void ViewManifest(object package)
+        public void ViewManifest(PackageInfoViewModel package)
         {
-            var pi = package as PackageInfoViewModel;
-            var manifestPath = Path.Combine(pi.PackageInfo.InstallLocation, "AppxManifest.xml");
+            var manifestPath = Path.Combine(package.PackageInfo.InstallLocation, "AppxManifest.xml");
             Uri manifestUri = new Uri(manifestPath, UriKind.Absolute);
             ProcessStartInfo psi = new ProcessStartInfo()
             {
@@ -71,19 +53,17 @@ namespace msix.catalog.app.ViewModels
                 null);
         }
 
-        public void OpenFolder(object package)
+        public void OpenFolder(PackageInfoViewModel package)
         {
-            var pi = package as PackageInfoViewModel;
             ProcessStartInfo psi = new ProcessStartInfo()
             {
                 UseShellExecute = true,
-                FileName = pi.PackageInfo.InstallLocation
+                FileName = package.PackageInfo.InstallLocation
             };
             Process.Start(psi);
             App.TelemetryClient.TrackEvent("OpenFolder",
-                new Dictionary<string, string> { { "FolderToOpen", pi.PackageInfo.InstallLocation } },
+                new Dictionary<string, string> { { "FolderToOpen", package.PackageInfo.InstallLocation } },
                 null);
         }
-
     }
 }
