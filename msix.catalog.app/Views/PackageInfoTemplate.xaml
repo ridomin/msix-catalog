@@ -28,7 +28,7 @@
                 <StackPanel Orientation="Horizontal" Margin="5">
                     <Button Content="Open" CommandParameter="{Binding}" Command="{Binding OpenCommand}" Margin="5"/>
                     <Button Content="View Manifest" CommandParameter="{Binding}" Command="{Binding ViewManifestCommand}" Margin="5" />
-                    <Button Content="OpenFolder" CommandParameter="{Binding}" Command="{Binding OpenFolderCommand}" Margin="5" />
+                    <Button Content="OpenFolder" CommandParameter="{Binding}" Command="{Binding OpenFolderCommand}" Margin="5" ToolTip="{Binding PackageInfo.InstallLocation}"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
