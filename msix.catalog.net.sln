@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "msix.catalog.app.net", "msi
 EndProject
 Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "msix.catalog.package.net", "msix.catalog.package.net\msix.catalog.package.net.wapproj", "{79223A6C-F495-4C85-8543-FADEAFF92526}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "msix.catalog.app.setup", "msix.catalog.app.setup\msix.catalog.app.setup.vdproj", "{DACBC95A-A1C5-44F0-98C2-487302F426A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +68,12 @@ Global
 		{79223A6C-F495-4C85-8543-FADEAFF92526}.Release|x86.ActiveCfg = Release|x86
 		{79223A6C-F495-4C85-8543-FADEAFF92526}.Release|x86.Build.0 = Release|x86
 		{79223A6C-F495-4C85-8543-FADEAFF92526}.Release|x86.Deploy.0 = Release|x86
+		{DACBC95A-A1C5-44F0-98C2-487302F426A8}.Debug|Any CPU.ActiveCfg = Debug
+		{DACBC95A-A1C5-44F0-98C2-487302F426A8}.Debug|x64.ActiveCfg = Debug
+		{DACBC95A-A1C5-44F0-98C2-487302F426A8}.Debug|x86.ActiveCfg = Debug
+		{DACBC95A-A1C5-44F0-98C2-487302F426A8}.Release|Any CPU.ActiveCfg = Release
+		{DACBC95A-A1C5-44F0-98C2-487302F426A8}.Release|x64.ActiveCfg = Release
+		{DACBC95A-A1C5-44F0-98C2-487302F426A8}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
