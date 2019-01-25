@@ -25,6 +25,6 @@ Merges to master are deployed to the next locations
 - [MSIX Catalog from the Microsoft Store](http://bit.ly/msix-catalog)
 - [MSIX Catalog from Azure Web Site NETFX ](http://msix-catalog.azurewebsites.net/AppxPackages)
 - [MSIX Catalog from Azure Web Site NETCORE3 ](http://msix-catalog.azurewebsites.net/netcore3)
-- [MSIX Catalog from NuGet as global tool](#) `dotnet tool install -g dotnet-msix-catalog`
+- [MSIX Catalog from NuGet as global tool](https://www.nuget.org/packages/dotnet-msix-catalog) `dotnet tool install -g dotnet-msix-catalog`
 
 
