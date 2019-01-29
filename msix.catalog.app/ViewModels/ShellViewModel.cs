@@ -32,11 +32,11 @@ namespace msix.catalog.app.ViewModels
 		{
 			// Build the menus
 			this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.HomeSolid }, Text = "Home", NavigationDestination = new Uri("Views/MainPage.xaml", UriKind.RelativeOrAbsolute) });
-			this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.ShoppingBagSolid }, Text = "StoreApps", NavigationDestination = new Uri("Views/StoreAppsPage.xaml", UriKind.RelativeOrAbsolute) });
-			this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.ColumnsSolid }, Text = "SideloadedApps",NavigationDestination = new Uri("Views/SideloadedAppsPage.xaml", UriKind.RelativeOrAbsolute) });
-			this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.UniversalAccessSolid }, Text = "DeveloperApps", NavigationDestination = new Uri("Views/DeveloperAppsPage.xaml", UriKind.RelativeOrAbsolute) });
-			this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.AddressBookSolid }, Text = "FrameworkApps", NavigationDestination = new Uri("Views/FrameworkAppsPage.xaml", UriKind.RelativeOrAbsolute) });
-			this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.HospitalSymbolSolid }, Text = "SystemApps", NavigationDestination = new Uri("Views/SystemAppsPage.xaml", UriKind.RelativeOrAbsolute) });
+			this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.ShoppingBagSolid }, Text = "Store", NavigationDestination = new Uri("Views/StoreAppsPage.xaml", UriKind.RelativeOrAbsolute) });
+			this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.ColumnsSolid }, Text = "Sideload",NavigationDestination = new Uri("Views/SideloadedAppsPage.xaml", UriKind.RelativeOrAbsolute) });
+			this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.UniversalAccessSolid }, Text = "Developer", NavigationDestination = new Uri("Views/DeveloperAppsPage.xaml", UriKind.RelativeOrAbsolute) });
+			this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.AddressBookSolid }, Text = "Framework", NavigationDestination = new Uri("Views/FrameworkAppsPage.xaml", UriKind.RelativeOrAbsolute) });
+			this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.HospitalSymbolSolid }, Text = "System", NavigationDestination = new Uri("Views/SystemAppsPage.xaml", UriKind.RelativeOrAbsolute) });
 
 			this.OptionsMenu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.InfoCircleSolid }, Text = "About", NavigationDestination = new Uri("Views/AboutPage.xaml", UriKind.RelativeOrAbsolute) });
 
