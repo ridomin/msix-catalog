@@ -55,12 +55,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Windows">
-      <HintPath>$(MSBuildProgramFiles32)\Windows Kits\10\UnionMetadata\10.0.17134.0\Windows.winmd</HintPath>
-      <Private>False</Private>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="MahApps.Metro">
       <Version>1.6.5</Version>
     </PackageReference>
@@ -69,6 +63,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.ApplicationInsights.WindowsServer">
       <Version>2.8.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts">
+      <Version>10.0.17763.141-preview</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

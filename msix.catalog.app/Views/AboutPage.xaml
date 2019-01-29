@@ -38,7 +38,7 @@
             <TextBlock Text="{Binding PublisherDisplayName}"  />
             <TextBlock Text="{Binding InstallLocation}" TextWrapping="WrapWithOverflow"/>
             <TextBlock Text="{Binding DotNetFlavor}" />
-            <TextBlock Text="{Binding StoreInfo}" />
+            <!--TextBlock Text="{Binding StoreInfo}" /-->
             <TextBlock Text="{Binding InstalledOn}" />
             <TextBlock Text="{Binding MyVersion}"  />
             <Border BorderBrush="DarkGray" Padding="5" Margin="5">
