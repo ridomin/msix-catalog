@@ -16,7 +16,8 @@ namespace msix.catalog.lib
             return await Task.Run(() =>
             {
                 var mgr = new PackageManager();
-                var allPackages = mgr.FindPackagesForUserWithPackageTypes(CurrentUserSid.Get(), (PackageTypes)(PackageType.All & ~PackageType.Bundle));
+            //var allPackages = mgr.FindPackagesForUserWithPackageTypes(CurrentUserSid.Get(), (PackageTypes)(PackageType.All & ~PackageType.Bundle));
+            var allPackages = mgr.FindPackagesForUser(CurrentUserSid.Get());
 
                 return allPackages.Select(p =>
                 {
@@ -33,7 +34,7 @@ namespace msix.catalog.lib
                         IsFramework = p.IsFramework,
                         InstalledDate = p.InstalledDate.UtcDateTime,
                         InstallLocation = p.GetStagedPackagePathByFullName(),
-                        Version = p.Id?.Version.ToString(),
+                        Version = $"{p.Id.Version.Major}.{p.Id.Version.Minor}.{p.Id.Version.Build}.{p.Id.Version.Revision}"
                     };
                 }).ToList();
             });

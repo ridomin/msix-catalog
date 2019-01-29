@@ -18,7 +18,7 @@
     </controls:MetroWindow.DataContext>
 
     <controls:MetroWindow.LeftWindowCommands>
-        <controls:WindowCommands ShowSeparators="False">
+        <controls:WindowCommands ShowSeparators="True">
             <Button x:Name="GoBackButton"
                     Width="{Binding ElementName=HamburgerMenuControl, Path=CompactPaneLength}"
                     Click="GoBack_OnClick">
@@ -53,7 +53,7 @@
         </Grid.Resources>
 
         <controls:HamburgerMenu x:Name="HamburgerMenuControl"
-                                IsPaneOpen="False"
+                                IsPaneOpen="True"
                                 ItemsSource="{Binding Menu}"
                                 OptionsItemsSource="{Binding OptionsMenu}"
                                 ItemInvoked="HamburgerMenuControl_OnItemInvoked"
