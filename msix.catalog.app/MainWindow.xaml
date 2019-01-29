@@ -10,8 +10,8 @@
                       Title="MSIX Catalog"
                       WindowTransitionsEnabled="False"
                       WindowStartupLocation="CenterScreen"
-                      Height="650"
-                      Width="800">
+                      Height="800"
+                      Width="1024">
 
     <controls:MetroWindow.DataContext>
         <viewModels:ShellViewModel />
