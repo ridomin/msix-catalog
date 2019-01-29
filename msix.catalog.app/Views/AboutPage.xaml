@@ -34,14 +34,32 @@
         <TextBlock Text="MSIX Catalog" Grid.Row="0" FontSize="20" HorizontalAlignment="Left" Margin="5"/>
 
         <StackPanel Grid.Row="1"  Orientation="Vertical" Margin="10" HorizontalAlignment="Left">
-            <TextBlock Text="{Binding VersionString}"  FontSize="16"/>
-            <TextBlock Text="{Binding PublisherDisplayName}"  />
-            <TextBlock Text="{Binding InstallLocation}" TextWrapping="WrapWithOverflow"/>
-            <TextBlock Text="{Binding DotNetFlavor}" />
+            <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="Version: " FontSize="16"/>
+                <TextBlock Text="{Binding VersionString}" FontSize="16"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="Publisher: "/>
+                <TextBlock Text="{Binding PublisherDisplayName}"  />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="Install Location: " />
+                <TextBlock Text="{Binding InstallLocation}" TextWrapping="Wrap"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical"  Margin="5">
+                <TextBlock Text=".NET CLR: " />
+                <TextBlock Text="{Binding DotNetFlavor}" />
+            </StackPanel>
             <!--TextBlock Text="{Binding StoreInfo}" /-->
-            <TextBlock Text="{Binding InstalledOn}" />
-            <TextBlock Text="{Binding MyVersion}"  />
-            <Border BorderBrush="DarkGray" Padding="5" Margin="5">
+            <StackPanel Orientation="Vertical"  Margin="5">
+                <TextBlock Text="Installed: " />
+                <TextBlock Text="{Binding InstalledOn}" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical"  Margin="5">
+                <TextBlock Text="MyVersion: " />
+                <TextBlock Text="{Binding MyVersion}"  />
+            </StackPanel>
+            <Border Padding="5" Margin="5">
                 <TextBlock Text="{Binding  Metadata}" />
             </Border>
         </StackPanel>
