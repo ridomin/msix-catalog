@@ -66,7 +66,7 @@ namespace msix.catalog.lib
             return string.Empty;
         }
 
-        public static string StoreInfo => "GetStoreInfo()";
+        public static string StoreInfo =>GetStoreInfo();
 
         public static string GetStoreInfo()
         {
@@ -74,19 +74,19 @@ namespace msix.catalog.lib
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Services.Store.StoreContext"))
             {
                 var ctx = Windows.Services.Store.StoreContext.GetDefault();
-                var lic = ctx.GetStoreProductForCurrentAppAsync().AsTask().Result;
+                var prodTask = ctx.GetStoreProductForCurrentAppAsync().AsTask().Result;
 
-                if (lic == null)
+                if (prodTask == null)
                 {
-                    res = "License is null";
+                    res = "Can't get product from context";
                 }
-                else if (lic.Product == null)
+                else if (prodTask.Product == null)
                 {
-                    res = "License Product is null:" + lic.ExtendedError.Message;
+                    res = "Product is null:" + prodTask.ExtendedError.Message;
                 }
                 else
                 {
-                    res = lic.Product.LinkUri.ToString();
+                    res = prodTask?.Product?.LinkUri?.ToString();
                 }
             }
             return res;
