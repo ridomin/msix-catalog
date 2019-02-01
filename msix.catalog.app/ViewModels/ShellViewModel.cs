@@ -15,8 +15,7 @@ namespace msix.catalog.app.ViewModels
 {
 	public class ShellViewModel : ViewModelBase
 	{
-		public ICommand RefreshCommand { get; private set; }
-
+		
 		public static IList<PackageInfo> _cachedListOfPackages = new List<PackageInfo>();
 			   
 
@@ -39,8 +38,6 @@ namespace msix.catalog.app.ViewModels
 			this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.HospitalSymbolSolid }, Text = "System", NavigationDestination = new Uri("Views/SystemAppsPage.xaml", UriKind.RelativeOrAbsolute) });
 
 			this.OptionsMenu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.InfoCircleSolid }, Text = "About", NavigationDestination = new Uri("Views/AboutPage.xaml", UriKind.RelativeOrAbsolute) });
-
-			RefreshCommand = new DelegateCommand<object>(Refresh, (o) => { return true; });
 
 			AllPackages = new NotifyTaskCompletion<IList<PackageInfo>>(PackageRepository.LoadAllInstalledAppsAsync());
 			AllPackages.PropertyChanged += AllPackages_PropertyChanged;
@@ -68,12 +65,6 @@ namespace msix.catalog.app.ViewModels
 		{
 			return null == uri ? null : this.OptionsMenu.FirstOrDefault(m => m.NavigationDestination.Equals(uri));
 		}
-
-		private void Refresh(object o)
-		{
-            AllPackages = new NotifyTaskCompletion<IList<PackageInfo>>(PackageRepository.LoadAllInstalledAppsAsync());
-            AllPackages.PropertyChanged += AllPackages_PropertyChanged;
-        }
 
 		public bool PackagesLoaded => _cachedListOfPackages.Count() > 0;
 

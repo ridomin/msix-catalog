@@ -33,11 +33,6 @@
             <TextBlock Text=" Inspect the " FontSize="20" />
             <TextBlock  HorizontalAlignment="Left" Text="{Binding TotalPackages}" FontSize="20" FontWeight="ExtraBold" />
             <TextBlock Text=" packages available in this machine. " FontSize="20" />
-            <TextBlock FontSize="20">
-                <Hyperlink Command="{Binding RefreshCommand}">
-                    <TextBlock Text="Refresh" />
-                </Hyperlink>
-            </TextBlock>
         </StackPanel>
     </StackPanel>
 </Page>
