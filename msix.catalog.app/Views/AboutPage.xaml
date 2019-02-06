@@ -43,8 +43,20 @@
                 <TextBlock Text="{Binding PublisherDisplayName}"  />
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="Installed From: " />
+                <TextBlock>
+                    <Hyperlink NavigateUri="{Binding InstalledFrom}">
+                        <TextBlock Text="{Binding InstalledFrom}" TextWrapping="Wrap" />
+                    </Hyperlink>
+                </TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="5">
                 <TextBlock Text="Install Location: " />
                 <TextBlock Text="{Binding InstallLocation}" TextWrapping="Wrap"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical"  Margin="5">
+                <TextBlock Text="Signature: " />
+                <TextBlock Text="{Binding SignatureKind}" />
             </StackPanel>
             <StackPanel Orientation="Vertical"  Margin="5">
                 <TextBlock Text=".NET CLR: " />

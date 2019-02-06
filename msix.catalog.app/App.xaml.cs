@@ -1,7 +1,10 @@
-﻿using System;
+﻿using msix.catalog.app.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -15,11 +18,20 @@ namespace msix.catalog.app
     public partial class App : Application
     {
         public static Microsoft.ApplicationInsights.TelemetryClient TelemetryClient = new Microsoft.ApplicationInsights.TelemetryClient();
+
+        public static Stopwatch Clock = Stopwatch.StartNew();
+
         public App()
         {
             this.Startup += App_Startup;
             this.Exit += App_Exit;
+            this.LoadCompleted += App_LoadCompleted;
             this.DispatcherUnhandledException += App_DispatcherUnhandledException;
+        }
+
+        private void App_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+            Clock.Stop();
         }
 
         private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)

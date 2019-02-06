@@ -29,13 +29,12 @@ namespace msix.catalog.app.ViewModels
 
         public PackagesViewModel()
         {
-            this.SideloadedPackages = new ListCollectionView(_sideloadedPackages);
-            this.DeveloperPackages = new ListCollectionView(_developerPackages);
-            this.StorePackages = new ListCollectionView(_storePackages);
-            this.SystemPackages = new ListCollectionView(_systemPackages);
-            this.FrameworkPackages = new ListCollectionView(_frameworkPackages);
-
             this.PopulatePackages();
+            this.SideloadedPackages = new ListCollectionView(_sideloadedPackages.OrderByDescending(p=>p.PackageInfo.InstalledDate).ToList());
+            this.DeveloperPackages = new ListCollectionView(_developerPackages.OrderByDescending(p => p.PackageInfo.InstalledDate).ToList());
+            this.StorePackages = new ListCollectionView(_storePackages.OrderByDescending(p => p.PackageInfo.InstalledDate).ToList());
+            this.SystemPackages = new ListCollectionView(_systemPackages.OrderByDescending(p => p.PackageInfo.InstalledDate).ToList());
+            this.FrameworkPackages = new ListCollectionView(_frameworkPackages.OrderByDescending(p => p.PackageInfo.InstalledDate).ToList());
         }
 
         private void PopulatePackages()

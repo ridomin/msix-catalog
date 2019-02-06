@@ -13,22 +13,27 @@ using System.Xml.Linq;
 
 namespace msix.catalog.app.ViewModels
 {
-	public class ShellViewModel : ViewModelBase
-	{
-		public ICommand RefreshCommand { get; private set; }
+    public class ShellViewModel : ViewModelBase
+    {
 
-		public static IList<PackageInfo> _cachedListOfPackages = new List<PackageInfo>();
-			   
+        public static IList<PackageInfo> _cachedListOfPackages = new List<PackageInfo>();
 
-		public string TotalPackages
-		{
-			get
-			{                
-				return _cachedListOfPackages.Count().ToString();
-			}
-		}
+        public string TotalPackages
+        {
+            get
+            {
+                return _cachedListOfPackages.Count().ToString();
+            }
+        }
+        private string startupTime = string.Empty;
 
-		public ShellViewModel()
+        public string StartUpTime
+        {
+            get => startupTime;
+            set => SetProperty(ref startupTime, value);
+        }
+
+        public ShellViewModel()
 		{
 			// Build the menus
 			this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.HomeSolid }, Text = "Home", NavigationDestination = new Uri("Views/MainPage.xaml", UriKind.RelativeOrAbsolute) });
@@ -40,11 +45,9 @@ namespace msix.catalog.app.ViewModels
 
 			this.OptionsMenu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.InfoCircleSolid }, Text = "About", NavigationDestination = new Uri("Views/AboutPage.xaml", UriKind.RelativeOrAbsolute) });
 
-			RefreshCommand = new DelegateCommand<object>(Refresh, (o) => { return true; });
-
 			AllPackages = new NotifyTaskCompletion<IList<PackageInfo>>(PackageRepository.LoadAllInstalledAppsAsync());
 			AllPackages.PropertyChanged += AllPackages_PropertyChanged;
-		}
+        }
 
 		private void AllPackages_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
@@ -68,12 +71,6 @@ namespace msix.catalog.app.ViewModels
 		{
 			return null == uri ? null : this.OptionsMenu.FirstOrDefault(m => m.NavigationDestination.Equals(uri));
 		}
-
-		private void Refresh(object o)
-		{
-            AllPackages = new NotifyTaskCompletion<IList<PackageInfo>>(PackageRepository.LoadAllInstalledAppsAsync());
-            AllPackages.PropertyChanged += AllPackages_PropertyChanged;
-        }
 
 		public bool PackagesLoaded => _cachedListOfPackages.Count() > 0;
 

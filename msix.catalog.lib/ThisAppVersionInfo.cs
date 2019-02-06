@@ -23,7 +23,6 @@ namespace msix.catalog.lib
         }
 
         public static string InstallLocation => System.Reflection.Assembly.GetCallingAssembly().Location;
-
         public static string VersionString => GetSafePackageVersion();
 
         private static string GetSafePackageVersion()
@@ -38,14 +37,17 @@ namespace msix.catalog.lib
                                                            Package.Current.Id.Version.Revision);
 
             }
+            else
+            {
+                var v = Assembly.GetExecutingAssembly().GetName().Version;
+                result = string.Format("{0}.{1}.{2}.{3}", v.Major, v.Minor, v.Build, v.Revision);
+            }
             return result;
         }
 
         public static string MyVersion => Assembly.GetCallingAssembly().GetName().FullName;
 
         public static string Metadata => GetSafeMetadata();
-
-
         private static string GetSafeMetadata()
         {
             if (OSVersionHelper.WindowsVersionHelper.HasPackageIdentity)
@@ -66,56 +68,70 @@ namespace msix.catalog.lib
             return string.Empty;
         }
 
-        public static string StoreInfo => GetStoreInfo();
-
+        public static string StoreInfo =>GetStoreInfo();
         public static string GetStoreInfo()
         {
             var res = "Store API not available ";
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Services.Store.StoreContext"))
             {
                 var ctx = Windows.Services.Store.StoreContext.GetDefault();
+                var prodTask = ctx.GetStoreProductForCurrentAppAsync().AsTask().Result;
 
-                if (ctx == null)
+                if (prodTask == null)
                 {
-                    res = "Store context not found";
+                    res = "Can't get product from context";
+                }
+                else if (prodTask.Product == null)
+                {
+                    res = "Product is null:" + prodTask.ExtendedError.Message;
                 }
                 else
                 {
-                    try
-                    {
-                        res = ctx.GetAppLicenseAsync().GetResults().SkuStoreId;
-                    }
-                    catch
-                    {
-                        res = "Store info not available";
-                    }
-
+                    res = prodTask?.Product?.LinkUri?.ToString();
                 }
             }
             return res;
         }
 
-        public static string InstalledOn => SafeInstalledOn();
-
-        private static string SafeInstalledOn()
+        public static DateTimeOffset InstalledOn  
         {
-            DateTimeOffset installed;
-            try
+            get
             {
-                installed = Package.Current.InstalledDate;
+                DateTimeOffset installed;
+                try
+                {
+                    installed = Package.Current.InstalledDate;
+                }
+                catch (Exception)
+                {
+                    installed = DateTime.MinValue;
+                }
+                return installed;
             }
-            catch (Exception)
-            {
-                installed = DateTime.Now;
-            }
-            return installed.ToLocalTime().ToString();
         }
 
-        public static string DotNetFlavor => GetDotNetFlavor();
+        public static string DotNetFlavor => typeof(string).Assembly.Location;
 
-        private static string GetDotNetFlavor()
+        public static string InstalledFrom
         {
-            return typeof(string).Assembly.Location;
+            get
+            {
+                if (OSVersionHelper.WindowsVersionHelper.IsWindows10April2018OrGreater &&
+                    OSVersionHelper.WindowsVersionHelper.HasPackageIdentity &&
+                    Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.ApplicationModel.PackageUpdateAvailabilityResult"))
+                {
+                    
+                    var aiInfo = Package.Current.GetAppInstallerInfo();
+                    if (aiInfo!=null)
+                    {
+                        return aiInfo.Uri.ToString();
+                    }
+                }
+
+                return "Install URI not available";
+            }
         }
+
+        public static string SignatureKind => OSVersionHelper.WindowsVersionHelper.HasPackageIdentity ? Package.Current.SignatureKind.ToString() : "";
     }
 }
