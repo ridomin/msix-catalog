@@ -13,21 +13,27 @@ using System.Xml.Linq;
 
 namespace msix.catalog.app.ViewModels
 {
-	public class ShellViewModel : ViewModelBase
-	{
-		
-		public static IList<PackageInfo> _cachedListOfPackages = new List<PackageInfo>();
-			   
+    public class ShellViewModel : ViewModelBase
+    {
 
-		public string TotalPackages
-		{
-			get
-			{                
-				return _cachedListOfPackages.Count().ToString();
-			}
-		}
+        public static IList<PackageInfo> _cachedListOfPackages = new List<PackageInfo>();
 
-		public ShellViewModel()
+        public string TotalPackages
+        {
+            get
+            {
+                return _cachedListOfPackages.Count().ToString();
+            }
+        }
+        private string startupTime = string.Empty;
+
+        public string StartUpTime
+        {
+            get => startupTime;
+            set => SetProperty(ref startupTime, value);
+        }
+
+        public ShellViewModel()
 		{
 			// Build the menus
 			this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.HomeSolid }, Text = "Home", NavigationDestination = new Uri("Views/MainPage.xaml", UriKind.RelativeOrAbsolute) });
@@ -41,7 +47,7 @@ namespace msix.catalog.app.ViewModels
 
 			AllPackages = new NotifyTaskCompletion<IList<PackageInfo>>(PackageRepository.LoadAllInstalledAppsAsync());
 			AllPackages.PropertyChanged += AllPackages_PropertyChanged;
-		}
+        }
 
 		private void AllPackages_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{

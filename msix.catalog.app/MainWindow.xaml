@@ -8,6 +8,7 @@
                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                       mc:Ignorable="d"
                       Title="MSIX Catalog"
+                      TitleCaps="False"
                       WindowTransitionsEnabled="False"
                       WindowStartupLocation="CenterScreen"
                       Height="800"
@@ -28,7 +29,10 @@
     </controls:MetroWindow.LeftWindowCommands>
 
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
         <Grid.Resources>
 
             <DataTemplate x:Key="MenuItemTemplate"
@@ -59,10 +63,14 @@
                                 ItemInvoked="HamburgerMenuControl_OnItemInvoked"
                                 ItemTemplate="{StaticResource MenuItemTemplate}"
                                 OptionsItemTemplate="{StaticResource MenuItemTemplate}"
-                                DisplayMode="CompactInline" />
+                                DisplayMode="CompactInline" 
+                                Grid.Row="0"/>
+        <StatusBar Grid.Row="1">
+            <StatusBarItem>Startup time:</StatusBarItem>
+            <StatusBarItem Content="{Binding StartUpTime}" />
+        </StatusBar>
 
     </Grid>
-
 </controls:MetroWindow>
 
 
