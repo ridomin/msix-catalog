@@ -30,7 +30,7 @@ namespace msix.catalog.lib
                         Author = p.Id?.Publisher,
                         SignatureKind = p.SignatureKind.ToString(),
                         Architecture = p.Id?.Architecture.ToString(),
-                        // AppInstallerUri = p.GetAppInstallerInfo()?.Uri.ToString() ,
+                        AppInstallerUri = GetSafeInstallUri(p),
                         IsFramework = p.IsFramework,
                         InstalledDate = p.InstalledDate.UtcDateTime,
                         InstallLocation = p.GetStagedPackagePathByFullName(),
@@ -78,6 +78,28 @@ namespace msix.catalog.lib
             }
 
             return string.Empty;
+        }
+
+        public static string GetSafeInstallUri(Package p)
+        {
+            string result = string.Empty;
+            if (OSVersionHelper.WindowsVersionHelper.IsWindows10April2018OrGreater)
+            {
+                var info = p.GetAppInstallerInfo();
+                if (info != null)
+                {
+                    result = info.Uri.ToString();
+                }
+                else
+                {
+                    result = "AppInstaller info not found";
+                }
+            }
+            else
+            {
+                result = "AppInstaller info not available";
+            }
+            return result;
         }
 
 

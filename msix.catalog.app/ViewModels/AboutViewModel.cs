@@ -1,4 +1,5 @@
-﻿using msix.catalog.lib;
+﻿using Humanizer;
+using msix.catalog.lib;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,7 +19,9 @@ namespace msix.catalog.app.ViewModels
         public string MyVersion => ThisAppVersionInfo.MyVersion;
         public string Metadata => ThisAppVersionInfo.Metadata;
         public string StoreInfo => ThisAppVersionInfo.StoreInfo;
-        public string InstalledOn => ThisAppVersionInfo.InstalledOn;
+        public string InstalledOn => ThisAppVersionInfo.InstalledOn.Humanize();
         public string DotNetFlavor => ThisAppVersionInfo.DotNetFlavor;
+        public string InstalledFrom => ThisAppVersionInfo.InstalledFrom;
+        public string SignatureKind => ThisAppVersionInfo.SignatureKind;
     }
 }

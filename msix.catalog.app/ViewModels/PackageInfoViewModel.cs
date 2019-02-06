@@ -15,7 +15,7 @@ namespace msix.catalog.app.ViewModels
         public ICommand OpenFolderCommand { get; private set; }
 
         public PackageInfoViewModel() : this(
-            new PackageInfo() { PackageName = "Test Package", Author = "Rido", PFN = "MyPFN" })
+            new PackageInfo())
         {
         }
 
