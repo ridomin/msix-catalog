@@ -7,19 +7,18 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="9fdac121-3227-4d20-9e7d-e022ab5fc881"
+    Name="18656RidoMin.MSIXCatalogCore"
     Publisher="CN=Ricardo Minguez, O=Ricardo Minguez, L=Redmond, S=Washington, C=US"
     Version="0.0.1.0" />
 
   <Properties>
-    <DisplayName>msix.catalog.core</DisplayName>
+    <DisplayName>MSIX Catalog Core</DisplayName>
     <PublisherDisplayName>ridomin</PublisherDisplayName>
     <Logo>Images\StoreLogo.png</Logo>
   </Properties>
 
   <Dependencies>
     <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
-    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.14393.0" MaxVersionTested="10.0.14393.0" />
   </Dependencies>
 
   <Resources>
