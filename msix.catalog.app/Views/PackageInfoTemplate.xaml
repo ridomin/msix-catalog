@@ -30,7 +30,6 @@
                         <TextBlock Text="{Binding PackageInfo.AppInstallerUri}" />
                     </Hyperlink>
                 </TextBlock>
-                <TextBlock Text="{Binding PackageInfo.SignatureKind}" />
                 <StackPanel Orientation="Horizontal" Margin="5">
                     <Button Content="Open" CommandParameter="{Binding}" Command="{Binding OpenCommand}" Margin="5"/>
                     <Button Content="View Manifest" CommandParameter="{Binding}" Command="{Binding ViewManifestCommand}" Margin="5" />
