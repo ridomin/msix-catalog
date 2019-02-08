@@ -44,7 +44,7 @@
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
     <EntryPointProjectUniqueName>..\msix.catalog.app\msix.catalog.app.core.csproj</EntryPointProjectUniqueName>
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
-    <PackageCertificateThumbprint>125377265792FDF546B0DD254A05BB9C99908843</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>C5A4ABA7655B2B11C41FAAE43A9D4FC2FA438E6F</PackageCertificateThumbprint>
     <AppInstallerUri>https://msix-catalog.azurewebsites.net/netcore3</AppInstallerUri>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
