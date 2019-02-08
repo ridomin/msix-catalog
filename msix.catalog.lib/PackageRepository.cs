@@ -83,7 +83,7 @@ namespace msix.catalog.lib
         public static string GetSafeInstallUri(Package p)
         {
             string result = string.Empty;
-            if (OSVersionHelper.WindowsVersionHelper.IsWindows10April2018OrGreater)
+            if (OSVersionHelper.WindowsVersionHelper.IsWindows10October2018OrGreater)
             {
                 var info = p.GetAppInstallerInfo();
                 if (info != null)

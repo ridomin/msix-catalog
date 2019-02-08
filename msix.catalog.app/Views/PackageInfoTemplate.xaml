@@ -25,11 +25,12 @@
                 </StackPanel>   
                 <TextBlock Text="{Binding PackageInfo.Author}" />
                 <TextBlock Text="{Binding PackageInfo.InstalledDate, FallbackValue='2019/01/01'}" />
-                <TextBlock>
+                <TextBlock Visibility="{Binding IsSideload, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <Hyperlink NavigateUri="{Binding PackageInfo.AppInstallerUri}">
                         <TextBlock Text="{Binding PackageInfo.AppInstallerUri}" />
                     </Hyperlink>
                 </TextBlock>
+                <TextBlock Text="{Binding PackageInfo.SignatureKind}" />
                 <StackPanel Orientation="Horizontal" Margin="5">
                     <Button Content="Open" CommandParameter="{Binding}" Command="{Binding OpenCommand}" Margin="5"/>
                     <Button Content="View Manifest" CommandParameter="{Binding}" Command="{Binding ViewManifestCommand}" Margin="5" />
