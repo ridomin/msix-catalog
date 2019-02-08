@@ -8,12 +8,12 @@
 
   <Identity
     Name="9fdac121-3227-4d20-9e7d-e022ab5fc881"
-    Publisher="CN=rmpablos"
-    Version="1.0.0.0" />
+    Publisher="CN=Ricardo Minguez, O=Ricardo Minguez, L=Redmond, S=Washington, C=US"
+    Version="0.0.1.0" />
 
   <Properties>
     <DisplayName>msix.catalog.core</DisplayName>
-    <PublisherDisplayName>rmpablos</PublisherDisplayName>
+    <PublisherDisplayName>ridomin</PublisherDisplayName>
     <Logo>Images\StoreLogo.png</Logo>
   </Properties>
 
