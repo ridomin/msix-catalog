@@ -27,3 +27,4 @@ steps:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+    msbuildarguments: '/p:AppxPackageSigningEnabled=false;/p:GenerateAppInstallerFile=false'
