@@ -22,9 +22,9 @@ steps:
     command: 'restore' 
     restoreSolution: '$(solution)' 
     
-- task: MSBuild@1
+- task: SBuild@1
   inputs:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    msbuildArguments: '/p:AppxPackageSigningEnabled=false;/p:GenerateAppInstallerFile=false'
+    msbuildArguments: '/p:AppxPackageSigningEnabled=false;GenerateAppInstallerFile=false'
