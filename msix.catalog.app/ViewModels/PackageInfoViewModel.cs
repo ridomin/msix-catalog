@@ -29,6 +29,8 @@ namespace msix.catalog.app.ViewModels
 
         public PackageInfo PackageInfo { get; private set; }
 
+        public bool IsSideload => PackageInfo.SignatureKind == "Developer";
+
         public void OpenApp(PackageInfoViewModel package)
         {
             uint res = PackageActivator.StartApp(package.PackageInfo.PFN);

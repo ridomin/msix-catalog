@@ -8,12 +8,13 @@
     <UseWPF>true</UseWPF>
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>msix-catalog</ToolCommandName>
-    <Version>0.1.1</Version>
+    <Version>0.0.1</Version>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <PackageId>dotnet-msix-catalog</PackageId>
     <Authors>rido</Authors>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>    
-    <ApplicationIcon>AppPackage.ico</ApplicationIcon>    
+    <ApplicationIcon>AppPackage.ico</ApplicationIcon>
+    <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
   </PropertyGroup>
 
   <ItemGroup>

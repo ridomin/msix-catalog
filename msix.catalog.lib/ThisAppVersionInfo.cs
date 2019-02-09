@@ -116,7 +116,7 @@ namespace msix.catalog.lib
         {
             get
             {
-                if (OSVersionHelper.WindowsVersionHelper.IsWindows10April2018OrGreater &&
+                if (OSVersionHelper.WindowsVersionHelper.IsWindows10October2018OrGreater &&
                     OSVersionHelper.WindowsVersionHelper.HasPackageIdentity &&
                     Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.ApplicationModel.PackageUpdateAvailabilityResult"))
                 {
