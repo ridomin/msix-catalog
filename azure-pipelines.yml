@@ -7,7 +7,8 @@ pool:
   vmImage: 'VS2017-Win2016'
 
 variables:
-  solution: '**/*.sln'
+  solution: 'msix.catalog.net.sln'
+  solutioncore: 'msix.catalog.core.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
@@ -24,7 +25,8 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: VSTest@2
+- task: VSBuild@1
   inputs:
+    solution: '$(solutioncore)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
