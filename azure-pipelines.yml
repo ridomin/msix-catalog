@@ -22,7 +22,7 @@ steps:
     command: 'restore' 
     restoreSolution: '$(solution)' 
     
-- task: SBuild@1
+- task: MSBuild@1
   inputs:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
