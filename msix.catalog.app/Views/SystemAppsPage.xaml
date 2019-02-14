@@ -14,13 +14,15 @@
     </Page.DataContext>
 
     <Grid DataContext="{Binding}">
-        <StackPanel Orientation="Vertical">
-            <TextBlock Text="System Apps" FontSize="24" Margin="5" />
-            <ListView ItemsSource="{Binding SystemPackages}" 
-                      ItemTemplate="{StaticResource PackageInfoTemplate}"
-                      VerticalContentAlignment="Top"
-                      ScrollViewer.VerticalScrollBarVisibility="Auto" 
-                      MaxHeight="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Grid}},Path=ActualHeight}" />
-        </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="System Packages" FontSize="24" Margin="5" />
+        <ListView ItemsSource="{Binding SystemPackages}" Grid.Row="1" 
+            ItemTemplate="{StaticResource PackageInfoTemplate}"
+            VerticalContentAlignment="Top"
+            ScrollViewer.VerticalScrollBarVisibility="Auto" />
     </Grid>
+
 </Page>
