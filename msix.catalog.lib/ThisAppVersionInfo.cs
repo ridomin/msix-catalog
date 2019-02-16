@@ -68,7 +68,7 @@ namespace msix.catalog.lib
             return string.Empty;
         }
 
-        public static string StoreInfo =>GetStoreInfo();
+        //public static string StoreInfo =>GetStoreInfo();
         public static string GetStoreInfo()
         {
             var res = "Store API not available ";
