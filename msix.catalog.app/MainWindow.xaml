@@ -35,8 +35,7 @@
         </Grid.RowDefinitions>
         <Grid.Resources>
 
-            <DataTemplate x:Key="MenuItemTemplate"
-                          DataType="{x:Type viewModels:MenuItem}">
+            <DataTemplate x:Key="MenuItemTemplate" DataType="{x:Type viewModels:MenuItem}">
                 <Grid Height="48">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="48" />

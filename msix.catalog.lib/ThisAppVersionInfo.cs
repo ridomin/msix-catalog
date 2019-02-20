@@ -116,19 +116,31 @@ namespace msix.catalog.lib
         {
             get
             {
-                if (OSVersionHelper.WindowsVersionHelper.IsWindows10October2018OrGreater &&
-                    OSVersionHelper.WindowsVersionHelper.HasPackageIdentity &&
-                    Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.ApplicationModel.PackageUpdateAvailabilityResult"))
+                if (SignatureKind == "Developer")
                 {
-                    
-                    var aiInfo = Package.Current.GetAppInstallerInfo();
-                    if (aiInfo!=null)
+                    if (OSVersionHelper.WindowsVersionHelper.IsWindows10October2018OrGreater &&
+                        OSVersionHelper.WindowsVersionHelper.HasPackageIdentity &&
+                        Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.ApplicationModel.PackageUpdateAvailabilityResult"))
                     {
-                        return aiInfo.Uri.ToString();
+                        var aiInfo = Package.Current.GetAppInstallerInfo();
+                        if (aiInfo != null)
+                        {
+                            return aiInfo.Uri.ToString();
+                        }
+                        else
+                        {
+                            return "AppInstaller info not available";
+                        }
+                    }
+                    else
+                    {
+                        return "Install URI not available on this platform/installation type.";
                     }
                 }
-
-                return "Install URI not available";
+                else
+                {
+                    return SignatureKind;
+                }
             }
         }
 
