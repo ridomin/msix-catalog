@@ -1,4 +1,5 @@
 ﻿using msix.catalog.app.ViewModels;
+using msix.catalog.lib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -57,9 +58,27 @@ namespace msix.catalog.app
             TelemetryClient.Context.Session.Id = Guid.NewGuid().ToString();
             TelemetryClient.Context.Device.OperatingSystem = Environment.OSVersion.ToString();
             TelemetryClient.Context.Component.Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-
+            TelemetryClient.Context.GlobalProperties.Add("DeploymentType", GetDeploymentType());
             // Log a page view:
             TelemetryClient.TrackTrace("App Start");
+        }
+
+        private string GetDeploymentType()
+        {
+            var result = "none";
+            if (OSVersionHelper.WindowsVersionHelper.HasPackageIdentity)
+            {
+                result = "packaged: " + ThisAppVersionInfo.SignatureKind;
+                
+            }
+           else
+            {
+                if (ThisAppVersionInfo.InstallLocation.Contains(".dotnet"))
+                {
+                    result = "NuGet global tool";
+                }
+            }
+            return result;
         }
     }
 }
