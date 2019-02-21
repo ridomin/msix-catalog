@@ -19,10 +19,11 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="Store Packages" FontSize="24" Margin="5" />
-        <ListView ItemsSource="{Binding StorePackages}" Grid.Row="1" 
-            ItemTemplate="{StaticResource PackageInfoTemplate}"
-            VerticalContentAlignment="Top"
-            ScrollViewer.VerticalScrollBarVisibility="Auto" />
+        <ScrollViewer Grid.Row="1">
+            <ItemsControl ItemsSource="{Binding StorePackages}"
+                ItemTemplate="{StaticResource PackageInfoTemplate}"
+                VerticalContentAlignment="Top" />
+        </ScrollViewer>
     </Grid>
 
 </Page>
