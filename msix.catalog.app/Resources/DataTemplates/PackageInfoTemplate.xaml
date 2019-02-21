@@ -22,12 +22,12 @@
                     <TextBlock Text=" (" FontSize="20" />
                     <TextBlock Text="{Binding PackageInfo.Architecture}" FontSize="20" />
                     <TextBlock Text=")" FontSize="20" />
-                </StackPanel>   
+                </StackPanel>
                 <TextBlock Text="{Binding PackageInfo.Author}" />
                 <TextBlock Text="{Binding PackageInfo.InstalledDate, FallbackValue='2019/01/01'}" />
                 <TextBlock Visibility="{Binding IsSideload, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <Hyperlink NavigateUri="{Binding PackageInfo.AppInstallerUri}">
-                        <TextBlock Text="{Binding PackageInfo.AppInstallerUri}" />
+                        <TextBlock Text="{Binding PackageInfo.AppInstallerUri}" Foreground="White" />
                     </Hyperlink>
                 </TextBlock>
                 <StackPanel Orientation="Horizontal" Margin="5">
@@ -38,5 +38,4 @@
             </StackPanel>
         </Grid>
     </DataTemplate>
-    
 </ResourceDictionary>

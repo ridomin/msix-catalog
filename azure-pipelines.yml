@@ -7,19 +7,24 @@ pool:
   vmImage: 'VS2017-Win2016'
 
 variables:
-  solution: 'msix-catalog.net.sln'
+  solution: 'msix.catalog.net.sln'
+  solutioncore: 'msix.catalog.core.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
 steps:
 - task: NuGetToolInstaller@0
+  inputs:
+    versionSpec: '4.9.3' 
 
 - task: NuGetCommand@2
   inputs:
-    restoreSolution: '$(solution)'
-
-- task: VSBuild@1
+    command: 'restore' 
+    restoreSolution: '$(solution)' 
+    
+- task: MSBuild@1
   inputs:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+    msbuildArguments: '/p:AppxPackageSigningEnabled=false;GenerateAppInstallerFile=false'
