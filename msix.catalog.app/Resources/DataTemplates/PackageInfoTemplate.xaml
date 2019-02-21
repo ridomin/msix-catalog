@@ -22,7 +22,7 @@
                     <TextBlock Text=" (" FontSize="20" />
                     <TextBlock Text="{Binding PackageInfo.Architecture}" FontSize="20" />
                     <TextBlock Text=")" FontSize="20" />
-                </StackPanel>   
+                </StackPanel>
                 <TextBlock Text="{Binding PackageInfo.Author}" />
                 <TextBlock Text="{Binding PackageInfo.InstalledDate, FallbackValue='2019/01/01'}" />
                 <TextBlock Visibility="{Binding IsSideload, Converter={StaticResource BooleanToVisibilityConverter}}">
@@ -38,5 +38,4 @@
             </StackPanel>
         </Grid>
     </DataTemplate>
-    
 </ResourceDictionary>
