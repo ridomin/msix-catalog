@@ -22,3 +22,5 @@ function UpdateVersion($path)
 }
 
 Get-ChildItem $PSScriptRoot -Include *.appxmanifest -Recurse | % { UpdateVersion $_.FullName }
+
+Get-ChildItem $PSScriptRoot -Include *.StoreAssociation.xml -Recurse | % {rm -Force $_.FullName}
