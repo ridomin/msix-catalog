@@ -13,6 +13,7 @@ function UpdateVersion($path)
 
 	if ($publisher.Length>0){
 		$manifest.Package.Identity.Publisher = $publisher
+		$manifest.Package.Properties.PublisherDisplayName = $publisher
 	}
 	
 	$manifest.Save($path)
