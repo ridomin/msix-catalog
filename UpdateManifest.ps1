@@ -1,4 +1,4 @@
-param ([Parameter(Mandatory = $true)][string] $suffix)
+param ([Parameter(Mandatory = $true)][string] $suffix, [Parameter(Mandatory = $false)][string] $publisher)
 
 
 function UpdateVersion($path)
@@ -10,6 +10,11 @@ function UpdateVersion($path)
 	$manifest.Package.Identity.Name += $suffix
 	#$manifest.Package.Properties.DisplayName += " " + $suffix
     $manifest.Package.Applications.Application.VisualElements.DisplayName += " " + $suffix	
+
+	if ($publisher.Length>0){
+		$manifest.Package.Identity.Publisher = $publisher
+	}
+	
 	$manifest.Save($path)
 }
 
