@@ -1,9 +1,11 @@
-param ([Parameter(Mandatory = $true)][string] $suffix, [Parameter(Mandatory = $false)][string] $publisher)
+param (
+	[Parameter(Mandatory = $true)][string] $suffix, 
+	[string] $publisher)
 
 
 function UpdateVersion($path)
 {
-	Write-Host "Updating manifest with suffix $suffix"
+	Write-Host "Updating manifest $path with suffix $suffix and publisher $publisher"
 	[xml]$manifest= get-content $path
 	
 	# Add suffix
@@ -11,7 +13,7 @@ function UpdateVersion($path)
 	#$manifest.Package.Properties.DisplayName += " " + $suffix
     $manifest.Package.Applications.Application.VisualElements.DisplayName += " " + $suffix	
 
-	if ($publisher.Length>0){
+	if ($publisher) {
 		$manifest.Package.Identity.Publisher = $publisher
 		$manifest.Package.Properties.PublisherDisplayName = $publisher
 	}
