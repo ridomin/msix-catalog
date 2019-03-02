@@ -34,6 +34,7 @@
                     <Button Content="Open" CommandParameter="{Binding}" Command="{Binding OpenCommand}" Margin="5"/>
                     <Button Content="View Manifest" CommandParameter="{Binding}" Command="{Binding ViewManifestCommand}" Margin="5" />
                     <Button Content="OpenFolder" CommandParameter="{Binding}" Command="{Binding OpenFolderCommand}" Margin="5" ToolTip="{Binding PackageInfo.InstallLocation}"/>
+                    <Button Content="Check for Updates" CommandParameter="{Binding}" Command="{Binding CheckForUpdatesCommand}" Margin="5" />
                 </StackPanel>
             </StackPanel>
         </Grid>

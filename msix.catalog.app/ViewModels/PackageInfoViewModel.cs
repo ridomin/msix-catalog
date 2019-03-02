@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using msix.catalog.app.Mvvm;
 using msix.catalog.lib;
+using Windows.ApplicationModel;
 
 namespace msix.catalog.app.ViewModels
 {
@@ -13,6 +16,7 @@ namespace msix.catalog.app.ViewModels
         public ICommand OpenCommand { get; private set; }
         public ICommand ViewManifestCommand { get; private set; }
         public ICommand OpenFolderCommand { get; private set; }
+        public ICommand CheckForUpdatesCommand { get; private set; }
 
         public PackageInfoViewModel() : this(
             new PackageInfo())
@@ -25,6 +29,7 @@ namespace msix.catalog.app.ViewModels
             OpenCommand = new DelegateCommand<PackageInfoViewModel>(OpenApp, (o) => { return !string.IsNullOrWhiteSpace(packageInfo.PFN); } );
             ViewManifestCommand = new DelegateCommand<PackageInfoViewModel>(ViewManifest);
             OpenFolderCommand = new DelegateCommand<PackageInfoViewModel>(OpenFolder);
+            CheckForUpdatesCommand = new DelegateCommand<PackageInfoViewModel>(CheckForUpdates, (c) => { return packageInfo.SignatureKind == "Developer" || packageInfo.SignatureKind == "Store"; });
         }
 
         public PackageInfo PackageInfo { get; private set; }
@@ -66,6 +71,24 @@ namespace msix.catalog.app.ViewModels
             App.TelemetryClient.TrackEvent("OpenFolder",
                 new Dictionary<string, string> { { "FolderToOpen", package.PackageInfo.InstallLocation } },
                 null);
+        }
+
+        public void CheckForUpdates(PackageInfoViewModel package)
+        {
+            if (package.IsSideload)
+            {
+                var pm = new Windows.Management.Deployment.PackageManager();
+                var p = pm.FindPackageForUser(CurrentUserSid.Get(), package.PackageInfo.PackageName);
+                var tres = p.CheckUpdateAvailabilityAsync().AsTask();
+                tres.Wait();
+                var res = tres.Result;
+                PackageUpdateAvailability pav = res.Availability;
+                MessageBox.Show(pav.ToString() + res.ExtendedError.Message);
+                if (pav==PackageUpdateAvailability.Available)
+                {
+                    pm.UpdatePackageAsync(new Uri(package.PackageInfo.AppInstallerUri), null, Windows.Management.Deployment.DeploymentOptions.InstallAllResources);
+                }
+            }
         }
     }
 }
