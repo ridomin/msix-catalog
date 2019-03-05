@@ -33,4 +33,4 @@ In addition to MSIX packages, you can get the tool using one of th next alternat
 
 ## Screenshot
 
-![MSIX Catalog screenshot](media/screenshot.png)
+![MSIX Catalog screenshot](media/screenshot.PNG)
