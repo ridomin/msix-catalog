@@ -82,10 +82,11 @@ namespace msix.catalog.app.ViewModels
         public string AllPackagesStats {
             get
             {
-                int numStorePackages = _cachedListOfPackages.Where(p => p.SignatureKind == "Store").Count();
+                int numStorePackages = _cachedListOfPackages.Where(p => p.SignatureKind == "Store" && p.IsFramework==false).Count();
+                int numFrameworkPackages = _cachedListOfPackages.Where(p => p.IsFramework == true).Count();
                 int numSideloadPackages = _cachedListOfPackages.Where(p => p.SignatureKind == "Developer").Count();
                 int numDevPackages = _cachedListOfPackages.Where(p => p.SignatureKind == "None").Count();
-                return $"{numStorePackages} apps from the Store, {numSideloadPackages} sideloaded and {numDevPackages} in development.";
+                return $"{numStorePackages} apps from the Store, {numFrameworkPackages} frameworkPackages, {numSideloadPackages} sideloaded and {numDevPackages} in development.";
             }
         }
 
