@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
             <TextBlock Text="{Binding NumSystemPackages}" FontSize="24" Padding="5,0,0,0"/>
-            <TextBlock Text="System Packages" FontSize="24"  />
+            <TextBlock Text=" System Packages" FontSize="24"  />
         </StackPanel>
         <Rectangle  Grid.Row="1" Width="auto"  Fill="White" />
         <ScrollViewer Grid.Row="2">

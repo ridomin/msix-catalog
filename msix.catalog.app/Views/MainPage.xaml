@@ -51,7 +51,7 @@
                         <TextBlock Text=" All Apps" FontSize="22" Foreground="Beige" />
                     </Border>
                     <TextBlock Text="{Binding AllPackagesStats}" 
-                               FontSize="20"
+                               FontSize="16"
                                Padding="5"
                                TextWrapping="WrapWithOverflow"/>
                 </StackPanel>
@@ -62,7 +62,7 @@
                         <TextBlock Text=" Sideloaded" FontSize="22" Foreground="Beige" />
                     </Border>
                     <TextBlock Text="{Binding SideloadPublisherStats}" 
-                               FontSize="20"
+                               FontSize="16"
                                Padding="5"
                                TextWrapping="WrapWithOverflow"/>
                 </StackPanel>
@@ -73,7 +73,7 @@
                         <TextBlock Text=" Updates" FontSize="22" Foreground="Beige" />
                     </Border>
                     <TextBlock Text="{Binding UpdatedInTheLastDayStats}" 
-                               FontSize="20"
+                               FontSize="16"
                                Padding="5"
                                TextWrapping="WrapWithOverflow"/>
                 </StackPanel>

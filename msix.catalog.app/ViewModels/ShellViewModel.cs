@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.IconPacks;
+﻿using Humanizer;
+using MahApps.Metro.IconPacks;
 using msix.catalog.app.Mvvm;
 using msix.catalog.lib;
 using System;
@@ -86,7 +87,7 @@ namespace msix.catalog.app.ViewModels
                 int numFrameworkPackages = _cachedListOfPackages.Where(p => p.IsFramework == true).Count();
                 int numSideloadPackages = _cachedListOfPackages.Where(p => p.SignatureKind == "Developer").Count();
                 int numDevPackages = _cachedListOfPackages.Where(p => p.SignatureKind == "None").Count();
-                return $"{numStorePackages} apps from the Store, {numFrameworkPackages} frameworkPackages, {numSideloadPackages} sideloaded and {numDevPackages} in development.";
+                return $"{numStorePackages} apps from the Store, {numFrameworkPackages} framework packages, {numSideloadPackages} sideloaded and {numDevPackages} in development.";
             }
         }
 
@@ -100,7 +101,8 @@ namespace msix.catalog.app.ViewModels
                                     .Select(p => p.Author)
                                     .Distinct()
                                     .Count();
-                return $"{numSideloadPackages} apps from {numPublishers} different publishers";
+                int numAppInstallerApps = sideloadedPackages.Where(p => !string.IsNullOrEmpty(p.AppInstallerUri)).Count();
+                return $"{numSideloadPackages} apps from {numPublishers} different publishers. {numAppInstallerApps} using AppInstaller.";
             }
         }
 
@@ -109,7 +111,15 @@ namespace msix.catalog.app.ViewModels
             get
             {
                 int numAppsUpdatedLast24h = _cachedListOfPackages.Where(p => p.InstalledDate > DateTime.Now.AddDays(-1)).Count();
-                return $"{numAppsUpdatedLast24h} apps updated in the latest 24 hours";
+                var lastUpdate = _cachedListOfPackages
+                                    .Where(p=>p.InstalledDate.HasValue==true)
+                                    .OrderByDescending(p => p.InstalledDate.Value).FirstOrDefault();
+                TimeSpan timeSinceLastUpdate = TimeSpan.FromSeconds(0);
+                if (lastUpdate != null)
+                {
+                    timeSinceLastUpdate = DateTime.Now.Subtract(lastUpdate.InstalledDate.Value);
+                }
+                return $"{numAppsUpdatedLast24h} apps updated in the latest 24 hours. Last update {timeSinceLastUpdate.Humanize(2,false)} ago.";
             }
         }
 
