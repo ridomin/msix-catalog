@@ -72,8 +72,21 @@ namespace msix.catalog.app.ViewModels
                         System.Diagnostics.Debug.WriteLine("skipping: " + item.PFN);
                     }
                 }
+                base.OnPropertyChanged("NumStorePackages");
+                base.OnPropertyChanged("NumSideloadedPackages");
+                base.OnPropertyChanged("NumDeveloperPackages");
+                base.OnPropertyChanged("NumFrameworkPackages");
+                base.OnPropertyChanged("NumSystemPackages");
             }
         }
+
+        public int NumStorePackages => _storePackages.Count;
+        public int NumSideloadedPackages => _sideloadedPackages.Count;
+        public int NumDeveloperPackages => _developerPackages.Count;
+        public int NumFrameworkPackages => _frameworkPackages.Count;
+        public int NumSystemPackages => _systemPackages.Count;
+
+
     }
 }
 
