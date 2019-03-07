@@ -15,7 +15,7 @@ The purpose of this app is to explore different "Desktop Modernization" technolo
 |-|-|-|
 |Store Release|[![rel badge](https://rido.vsrm.visualstudio.com/_apis/public/Release/badge/3946e8eb-731c-4bd3-a330-f374e4f8a046/3/3)](https://bit.ly/msix-catalog)|[![rel badge](https://rido.vsrm.visualstudio.com/_apis/public/Release/badge/3946e8eb-731c-4bd3-a330-f374e4f8a046/5/5)](https://bit.ly/msix-catalog-core)|
 |Sideload|[![Rel Badge](https://rido.vsrm.visualstudio.com/_apis/public/Release/badge/3946e8eb-731c-4bd3-a330-f374e4f8a046/1/1)](http://msix-catalog.azurewebsites.net/AppxPackages) |[![](https://rido.vsrm.visualstudio.com/_apis/public/Release/badge/3946e8eb-731c-4bd3-a330-f374e4f8a046/4/4)](http://msix-catalog.azurewebsites.net/netcore3)|
-|AppCenter|[![Build status](https://build.appcenter.ms/v0.1/apps/a92bf008-9e06-4c8c-8a30-d7f6099c3242/branches/dev/badge)](https://install.appcenter.ms/users/rido/apps/msix-catalog/distribution_groups/public)||
+|AppCenter|[![Build status](https://build.appcenter.ms/v0.1/apps/a92bf008-9e06-4c8c-8a30-d7f6099c3242/branches/dev/badge)](https://install.appcenter.ms/users/rido/apps/msix-catalog/distribution_groups/public)|[![Build Status](https://rido.vsrm.visualstudio.com/_apis/public/Release/badge/3946e8eb-731c-4bd3-a330-f374e4f8a046/4/4)](https://install.appcenter.ms/users/rido/apps/msix-catalog-core/distribution_groups/public)|
 
 > All build definitions are available on [Azure Dev Ops Pipelines](https://rido.visualstudio.com/msix-catalog)
 
