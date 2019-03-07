@@ -92,12 +92,12 @@ namespace msix.catalog.lib
                 }
                 else
                 {
-                    result = "AppInstaller info not found";
+                    result = string.Empty;
                 }
             }
             else
             {
-                result = "AppInstaller info not available";
+                result = string.Empty;
             }
             return result;
         }

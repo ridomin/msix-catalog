@@ -16,10 +16,15 @@
     <Grid DataContext="{Binding}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
+            <RowDefinition Height="5" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="System Packages" FontSize="24" Margin="5" />
-        <ScrollViewer Grid.Row="1">
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <TextBlock Text="{Binding NumSystemPackages}" FontSize="24" Padding="5,0,0,0"/>
+            <TextBlock Text=" System Packages" FontSize="24"  />
+        </StackPanel>
+        <Rectangle  Grid.Row="1" Width="auto"  Fill="White" />
+        <ScrollViewer Grid.Row="2">
             <ItemsControl ItemsSource="{Binding SystemPackages}" 
                 ItemTemplate="{StaticResource PackageInfoTemplate}"
                 VerticalContentAlignment="Top"
