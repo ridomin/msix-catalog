@@ -79,5 +79,14 @@
                 </StackPanel>
             </Border>
         </StackPanel>
+        <StackPanel Orientation="Vertical">
+            <ItemsControl ItemsSource="{Binding DistinctPublishers}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
     </StackPanel>
 </Page>

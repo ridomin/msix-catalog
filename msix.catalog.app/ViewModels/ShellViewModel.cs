@@ -49,6 +49,7 @@ namespace msix.catalog.app.ViewModels
             AllPackages = new NotifyTaskCompletion<IList<PackageInfo>>(PackageRepository.LoadAllInstalledAppsAsync());
             AllPackages.PropertyChanged += AllPackages_PropertyChanged;
         }
+        public NotifyTaskCompletion<IList<PackageInfo>> AllPackages { get; private set; }
 
         private void AllPackages_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
@@ -61,11 +62,14 @@ namespace msix.catalog.app.ViewModels
                 base.OnPropertyChanged("AllPackagesStats");
                 base.OnPropertyChanged("SideloadPublisherStats");
                 base.OnPropertyChanged("UpdatedInTheLastDayStats");
+                base.OnPropertyChanged("DistinctPublishers");
             }
-}
+        }
 
-        public NotifyTaskCompletion<IList<PackageInfo>> AllPackages { get; private set; }
-
+        public List<string> DistinctPublishers = _cachedListOfPackages
+                                                  .Where(p => p.SignatureKind == "Developer")
+                                                  .Select(p => p.Author).Distinct().ToList<string>();
+        
         public object GetItem(object uri)
         {
             return null == uri ? null : this.Menu.FirstOrDefault(m => m.NavigationDestination.Equals(uri));
