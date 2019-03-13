@@ -139,11 +139,60 @@ namespace msix.catalog.lib
                 }
                 else
                 {
-                    return SignatureKind;
+                    return "unkown";
                 }
             }
         }
 
         public static string SignatureKind => OSVersionHelper.WindowsVersionHelper.HasPackageIdentity ? Package.Current.SignatureKind.ToString() : "";
+
+        public static string InstallerKind
+        {
+            get
+            {
+                if (SignatureKind=="Store")
+                {
+                    return "Store";
+                } else if (SignatureKind=="Developer")
+                {
+                    if (OSVersionHelper.WindowsVersionHelper.IsWindows10October2018OrGreater &&
+                       OSVersionHelper.WindowsVersionHelper.HasPackageIdentity &&
+                       Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.ApplicationModel.PackageUpdateAvailabilityResult"))
+                    {
+                        var aiInfo = Package.Current.GetAppInstallerInfo();
+                        if (aiInfo != null)
+                        {
+                            return "AppInstaller";
+                        }
+                    }
+                    else
+                    {
+                        return "Sideloaded";
+                    }
+                } else if (SignatureKind=="Enteprise")
+                {
+                    return "Enterprise";
+                }
+                return "Unkown";
+            }
+        }
+
+        public static string GetDeploymentType()
+        {
+            var result = "none";
+            if (OSVersionHelper.WindowsVersionHelper.HasPackageIdentity)
+            {
+                result = $"MSIX {ThisAppVersionInfo.SignatureKind} from {ThisAppVersionInfo.InstallerKind}";
+
+            }
+            else
+            {
+                if (ThisAppVersionInfo.InstallLocation.Contains(".dotnet"))
+                {
+                    result = "NuGet global tool";
+                }
+            }
+            return result;
+        }
     }
 }
