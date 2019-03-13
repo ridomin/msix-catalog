@@ -3,6 +3,7 @@ using msix.catalog.app.Mvvm;
 using msix.catalog.lib;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,12 @@ namespace msix.catalog.app.ViewModels
 
         private void NavigateToGitHub(AboutViewModel obj)
         {
-            System.Diagnostics.Process.Start(this.GitHubProjectUrl);
+            ProcessStartInfo psi = new ProcessStartInfo()
+            {
+                UseShellExecute = true,
+                FileName = this.GitHubProjectUrl
+            };
+            Process.Start(psi);
         }
         public string GitHubProjectUrl => "https://github.com/ridomin/msix-catalog";
         public string PublisherDisplayName => ThisAppVersionInfo.PublisherDisplayName;
