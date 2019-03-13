@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Windows.ApplicationModel;
+using Windows.Foundation.Metadata;
 using Windows.Management.Deployment;
 
 namespace msix.catalog.lib
@@ -83,21 +84,29 @@ namespace msix.catalog.lib
         public static string GetSafeInstallUri(Package p)
         {
             string result = string.Empty;
-            if (OSVersionHelper.WindowsVersionHelper.IsWindows10October2018OrGreater)
+            try
             {
-                var info = p.GetAppInstallerInfo();
-                if (info != null)
+                if (OSVersionHelper.WindowsVersionHelper.IsWindows10October2018OrGreater &&
+                    ApiInformation.IsMethodPresent("Windows.ApplicationModel.Package", "GetAppInstallerInfo"))
                 {
-                    result = info.Uri.ToString();
+                    AppInstallerInfo info = p.GetAppInstallerInfo();
+                    if (info != null)
+                    {
+                        result = info.Uri.ToString();
+                    }
+                    else
+                    {
+                        result = "not present";
+                    }
                 }
                 else
                 {
-                    result = string.Empty;
+                    result = "not available on this platform";
                 }
             }
-            else
+            catch (Exception)
             {
-                result = string.Empty;
+                result = "error getting appinstaller info";
             }
             return result;
         }

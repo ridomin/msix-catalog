@@ -55,7 +55,7 @@ namespace CalculatorTest
                 appCapabilities.SetCapability("app", "Root");
                 DesktopSession = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
 
-                var CortanaWindow = DesktopSession.FindElementByName("MSIX Catalog - 0.1.1795.0");
+                var CortanaWindow = DesktopSession.FindElementByName("MSIX Catalog - 0.1.1822.0");
                 var CortanaTopLevelWindowHandle = CortanaWindow.GetAttribute("NativeWindowHandle");
                 CortanaTopLevelWindowHandle = (int.Parse(CortanaTopLevelWindowHandle)).ToString("x"); // Convert to Hex
 

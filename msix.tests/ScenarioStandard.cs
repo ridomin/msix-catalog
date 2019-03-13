@@ -40,18 +40,20 @@ namespace CalculatorTest
         [TestMethod]
         public void Store()
         {
-            session.FindElementByName("Store").Click();
-            WindowsElement name = session.FindElementByName("Store Packages");
+            var storeMenuItem = session.FindElementByName("Store");
+            Assert.IsNotNull(storeMenuItem, "Store Menu Item not found");
+            storeMenuItem.Click();
             Thread.Sleep(1000);
-            Assert.IsNotNull(name);
+            WindowsElement name = session.FindElementByName("Store Packages");
+            Assert.IsNotNull(name, "Store Packages Title not found");
         }
 
         [TestMethod]
         public void Sideload()
         {
             session.FindElementByName("Sideload").Click();
-            WindowsElement name = session.FindElementByName("Sideload Packages");
             Thread.Sleep(500);
+            WindowsElement name = session.FindElementByName("Sideload Packages");
             Assert.IsNotNull(name);
         }
 
@@ -59,8 +61,8 @@ namespace CalculatorTest
         public void Developer()
         {
             session.FindElementByName("Developer").Click();
-            WindowsElement name = session.FindElementByName("Developer Packages");
             Thread.Sleep(500);
+            WindowsElement name = session.FindElementByName("Developer Packages");
             Assert.IsNotNull(name);
         }
 
@@ -68,8 +70,8 @@ namespace CalculatorTest
         public void Framework()
         {
             session.FindElementByName("Framework").Click();
-            WindowsElement name = session.FindElementByName("Framework Packages");
             Thread.Sleep(500);
+            WindowsElement name = session.FindElementByName("Framework Packages");
             Assert.IsNotNull(name);
         }
 
@@ -78,8 +80,8 @@ namespace CalculatorTest
         public void System()
         {
             session.FindElementByName("System").Click();
-            WindowsElement name = session.FindElementByName("System Packages");
             Thread.Sleep(500);
+            WindowsElement name = session.FindElementByName("System Packages");
             Assert.IsNotNull(name);
         }
 
@@ -89,8 +91,8 @@ namespace CalculatorTest
         public void About()
         {
             session.FindElementByName("About").Click();
-            WindowsElement name = session.FindElementByName("MSIX Catalog");
             Thread.Sleep(500);
+            WindowsElement name = session.FindElementByName("MSIX Catalog");
             Assert.IsNotNull(name);
         }
 
