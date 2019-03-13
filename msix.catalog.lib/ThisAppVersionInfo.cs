@@ -157,7 +157,7 @@ namespace msix.catalog.lib
                 {
                     if (OSVersionHelper.WindowsVersionHelper.IsWindows10October2018OrGreater &&
                        OSVersionHelper.WindowsVersionHelper.HasPackageIdentity &&
-                       Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.ApplicationModel.PackageUpdateAvailabilityResult"))
+                       Windows.Foundation.Metadata.ApiInformation.IsMethodPresent("Windows.ApplicationModel.Package", "GetAppInstallerInfo"))
                     {
                         var aiInfo = Package.Current.GetAppInstallerInfo();
                         if (aiInfo != null)
@@ -183,7 +183,6 @@ namespace msix.catalog.lib
             if (OSVersionHelper.WindowsVersionHelper.HasPackageIdentity)
             {
                 result = $"MSIX {ThisAppVersionInfo.SignatureKind} from {ThisAppVersionInfo.InstallerKind}";
-
             }
             else
             {
