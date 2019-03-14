@@ -30,7 +30,7 @@ namespace msix.catalog.app
         {
             Navigation.Navigation.Navigate(new Uri("Views/MainPage.xaml", UriKind.RelativeOrAbsolute));
             ((ShellViewModel)this.DataContext).StartUpTime = App.Clock.Elapsed.Humanize(2, false);
-            this.Title += $"{FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion} [{ThisAppVersionInfo.GetDeploymentType()}]";
+            this.Title += $"{ThisAppVersionInfo.ProductVersion} [{ThisAppVersionInfo.GetDeploymentType()}] [{ThisAppVersionInfo.GetDotNetInfo()}]";
         }
 
         private void SplitViewFrame_OnNavigated(object sender, NavigationEventArgs e)
