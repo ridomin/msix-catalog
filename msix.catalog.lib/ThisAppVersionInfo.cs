@@ -139,11 +139,67 @@ namespace msix.catalog.lib
                 }
                 else
                 {
-                    return SignatureKind;
+                    return "unkown";
                 }
             }
         }
 
         public static string SignatureKind => OSVersionHelper.WindowsVersionHelper.HasPackageIdentity ? Package.Current.SignatureKind.ToString() : "";
+
+        public static string InstallerKind
+        {
+            get
+            {
+                string result = string.Empty;
+                if (SignatureKind=="Store")
+                {
+                    result = "Store";
+                } else if (SignatureKind=="Developer")
+                {
+                    if (OSVersionHelper.WindowsVersionHelper.IsWindows10October2018OrGreater &&
+                       OSVersionHelper.WindowsVersionHelper.HasPackageIdentity &&
+                       Windows.Foundation.Metadata.ApiInformation.IsMethodPresent("Windows.ApplicationModel.Package", "GetAppInstallerInfo"))
+                    {
+                        try
+                        {
+                            var aiInfo = Package.Current.GetAppInstallerInfo();
+                            if (aiInfo != null)
+                            {
+                                result = "AppInstaller";
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            result = "not available";
+                        }
+                    }
+                    else
+                    {
+                        result = "Sideloaded";
+                    }
+                } else if (SignatureKind=="Enteprise")
+                {
+                    result= "Enterprise";
+                }
+                return result;
+            }
+        }
+
+        public static string GetDeploymentType()
+        {
+            var result = "none";
+            if (OSVersionHelper.WindowsVersionHelper.HasPackageIdentity)
+            {
+                result = $"Packaged from {ThisAppVersionInfo.InstallerKind}";
+            }
+            else
+            {
+                if (ThisAppVersionInfo.InstallLocation.Contains(".dotnet"))
+                {
+                    result = "NuGet global tool";
+                }
+            }
+            return result;
+        }
     }
 }
