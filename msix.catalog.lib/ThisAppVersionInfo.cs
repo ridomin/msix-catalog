@@ -150,30 +150,38 @@ namespace msix.catalog.lib
         {
             get
             {
+                string result = string.Empty;
                 if (SignatureKind=="Store")
                 {
-                    return "Store";
+                    result = "Store";
                 } else if (SignatureKind=="Developer")
                 {
                     if (OSVersionHelper.WindowsVersionHelper.IsWindows10October2018OrGreater &&
                        OSVersionHelper.WindowsVersionHelper.HasPackageIdentity &&
                        Windows.Foundation.Metadata.ApiInformation.IsMethodPresent("Windows.ApplicationModel.Package", "GetAppInstallerInfo"))
                     {
-                        var aiInfo = Package.Current.GetAppInstallerInfo();
-                        if (aiInfo != null)
+                        try
                         {
-                            return "AppInstaller";
+                            var aiInfo = Package.Current.GetAppInstallerInfo();
+                            if (aiInfo != null)
+                            {
+                                result = "AppInstaller";
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            result = "not available";
                         }
                     }
                     else
                     {
-                        return "Sideloaded";
+                        result = "Sideloaded";
                     }
                 } else if (SignatureKind=="Enteprise")
                 {
-                    return "Enterprise";
+                    result= "Enterprise";
                 }
-                return "Unkown";
+                return result;
             }
         }
 
@@ -182,7 +190,7 @@ namespace msix.catalog.lib
             var result = "none";
             if (OSVersionHelper.WindowsVersionHelper.HasPackageIdentity)
             {
-                result = $"MSIX {ThisAppVersionInfo.SignatureKind} from {ThisAppVersionInfo.InstallerKind}";
+                result = $"Packaged from {ThisAppVersionInfo.InstallerKind}";
             }
             else
             {
