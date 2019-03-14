@@ -1,7 +1,6 @@
 ﻿using Humanizer;
 using MahApps.Metro.Controls;
 using msix.catalog.app.ViewModels;
-using msix.catalog.lib;
 using System;
 using System.Diagnostics;
 using System.Reflection;
@@ -30,7 +29,7 @@ namespace msix.catalog.app
         {
             Navigation.Navigation.Navigate(new Uri("Views/MainPage.xaml", UriKind.RelativeOrAbsolute));
             ((ShellViewModel)this.DataContext).StartUpTime = App.Clock.Elapsed.Humanize(2, false);
-            this.Title += $"{FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion} [{ThisAppVersionInfo.GetDeploymentType()}]";
+            this.Title += FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion;
         }
 
         private void SplitViewFrame_OnNavigated(object sender, NavigationEventArgs e)
