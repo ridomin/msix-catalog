@@ -6,6 +6,8 @@ using System.Text;
 using Windows.ApplicationModel;
 using System.Xml.Linq;
 using System.Reflection;
+using System.Diagnostics;
+using System.Runtime.Versioning;
 
 namespace msix.catalog.lib
 {
@@ -112,38 +114,131 @@ namespace msix.catalog.lib
 
         public static string DotNetFlavor => typeof(string).Assembly.Location;
 
-        public static string InstalledFrom
+        public static string SignatureKind => OSVersionHelper.WindowsVersionHelper.HasPackageIdentity ? Package.Current.SignatureKind.ToString() : "";
+
+        private static AppInstallerInfo GetSafeAppInstallerInfo()
+        {
+            AppInstallerInfo result = null;
+            try
+            {
+                if (OSVersionHelper.WindowsVersionHelper.IsWindows10October2018OrGreater &&
+                          OSVersionHelper.WindowsVersionHelper.HasPackageIdentity &&
+                          Windows.Foundation.Metadata.ApiInformation.IsMethodPresent("Windows.ApplicationModel.Package", "GetAppInstallerInfo"))
+                {
+                    result =  Package.Current.GetAppInstallerInfo();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+            }
+            return result;
+        }
+
+
+        public static string AppInstallerUri
         {
             get
             {
                 if (SignatureKind == "Developer")
                 {
-                    if (OSVersionHelper.WindowsVersionHelper.IsWindows10October2018OrGreater &&
-                        OSVersionHelper.WindowsVersionHelper.HasPackageIdentity &&
-                        Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.ApplicationModel.PackageUpdateAvailabilityResult"))
+                    var aiInfo = GetSafeAppInstallerInfo();
+                    if (aiInfo != null)
                     {
-                        var aiInfo = Package.Current.GetAppInstallerInfo();
-                        if (aiInfo != null)
-                        {
-                            return aiInfo.Uri.ToString();
-                        }
-                        else
-                        {
-                            return "AppInstaller info not available";
-                        }
+                        return aiInfo.Uri.ToString();
                     }
                     else
                     {
-                        return "Install URI not available on this platform/installation type.";
+                        return "AppInstaller info not available";
                     }
                 }
                 else
                 {
-                    return SignatureKind;
+                    return "unkown";
                 }
             }
         }
 
-        public static string SignatureKind => OSVersionHelper.WindowsVersionHelper.HasPackageIdentity ? Package.Current.SignatureKind.ToString() : "";
+        public static string InstallerKind
+        {
+            get
+            {
+                string result = "File";
+                if (SignatureKind=="Store")
+                {
+                    result = "Store";
+                }
+                else if (SignatureKind=="Developer")
+                {
+                    if (OSVersionHelper.WindowsVersionHelper.IsWindows10October2018OrGreater &&
+                        OSVersionHelper.WindowsVersionHelper.HasPackageIdentity)
+                    {
+                        var aiInfo = GetSafeAppInstallerInfo();
+                        if (aiInfo != null)
+                        {
+                            result = "AppInstaller";
+                        }
+                    }
+                    else
+                    {
+                        result = "Sideload";
+                    }
+                } 
+                return result;
+            }
+        }
+
+        public static string GetDeploymentType()
+        {
+            var result = "Not Packaged";
+            if (OSVersionHelper.WindowsVersionHelper.HasPackageIdentity)
+            {
+                result = $"Packaged from {ThisAppVersionInfo.InstallerKind}";
+            }
+            else
+            {
+                if (ThisAppVersionInfo.InstallLocation.Contains(".dotnet"))
+                {
+                    result = "NuGet global tool";
+                }
+            }
+            return result;
+        }
+
+        public static string ProductVersion => FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).ProductVersion;
+
+        public static string GetDotNetInfo()
+        {
+            string result = "";
+
+            var framework = Assembly
+                            .GetEntryAssembly()?
+                            .GetCustomAttribute<TargetFrameworkAttribute>()?
+                            .FrameworkName;
+
+            bool IsCore = framework.ToLowerInvariant().Contains("core");
+            var runTimeDir = new FileInfo(typeof(string).Assembly.Location);
+            var entryDir = new FileInfo(Assembly.GetEntryAssembly().Location); 
+            bool IsSelfContaied = runTimeDir.DirectoryName == entryDir.DirectoryName;
+
+            if (IsCore)
+            {
+                result += "NET CORE - ";
+                if (IsSelfContaied)
+                {
+                    result += "SCD";
+                }
+                else
+                {
+                    result += "FDD";
+                }
+            }
+            else
+            {
+                result = "NET FRAMEWORK";
+            }
+
+            return result;
+        }
     }
 }
