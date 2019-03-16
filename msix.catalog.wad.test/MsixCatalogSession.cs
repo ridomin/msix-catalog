@@ -21,7 +21,7 @@ using System;
 
 namespace CalculatorTest
 {
-    public class CalculatorSession
+    public class MsixCatalogSession
     {
         // Note: append /wd/hub to the URL if you're directing the test at Appium
         private const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
@@ -33,7 +33,6 @@ namespace CalculatorTest
 
         public static void Setup(TestContext context)
         {
-            // Launch Calculator application if it is not yet launched
             if (session == null)
             {
                 // Create a new session to bring up an instance of the Calculator application
@@ -55,12 +54,12 @@ namespace CalculatorTest
                 appCapabilities.SetCapability("app", "Root");
                 DesktopSession = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
 
-                var CortanaWindow = DesktopSession.FindElementByName("MSIX Catalog - 0.1.1822.0");
-                var CortanaTopLevelWindowHandle = CortanaWindow.GetAttribute("NativeWindowHandle");
-                CortanaTopLevelWindowHandle = (int.Parse(CortanaTopLevelWindowHandle)).ToString("x"); // Convert to Hex
+                var mainWindow = DesktopSession.FindElementByAccessibilityId("MSIXCatalogMainWindow"); // DesktopSession.FindElementByName("MSIX Catalog - 0.1.1822.0");
+                var mainWindowHandle = mainWindow.GetAttribute("NativeWindowHandle");
+                mainWindowHandle = (int.Parse(mainWindowHandle)).ToString("x"); // Convert to Hex
 
                 appCapabilities = new DesiredCapabilities();
-                appCapabilities.SetCapability("appTopLevelWindow", CortanaTopLevelWindowHandle);
+                appCapabilities.SetCapability("appTopLevelWindow", mainWindowHandle);
                 session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
                 Assert.IsNotNull(session);
 

@@ -9,6 +9,7 @@
                       mc:Ignorable="d"
                       Title="MSIX Catalog - "
                       TitleCaps="False"
+                      AutomationProperties.AutomationId="MSIXCatalogMainWindow"
                       WindowTransitionsEnabled="False"
                       WindowStartupLocation="CenterScreen"
                       Height="800"

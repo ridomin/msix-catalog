@@ -22,89 +22,12 @@ using System;
 namespace CalculatorTest
 {
     [TestClass]
-    public class ScenarioStandard : CalculatorSession
+    public class NavigateTabsUITest : MsixCatalogSession
     {
-        private static WindowsElement header;
-        private static WindowsElement calculatorResult;
-
-        [TestMethod]
-        public void Home()
-        {
-            
-            session.FindElementByName("Home").Click();
-            Thread.Sleep(1500);
-            WindowsElement name = session.FindElementByName("MSIX Catalog");
-            Assert.IsNotNull(name);
-        }
-
-        [TestMethod]
-        public void Store()
-        {
-            var storeMenuItem = session.FindElementByName("Store");
-            Assert.IsNotNull(storeMenuItem, "Store Menu Item not found");
-            storeMenuItem.Click();
-            Thread.Sleep(1000);
-            WindowsElement name = session.FindElementByName("Store Packages");
-            Assert.IsNotNull(name, "Store Packages Title not found");
-        }
-
-        [TestMethod]
-        public void Sideload()
-        {
-            session.FindElementByName("Sideload").Click();
-            Thread.Sleep(500);
-            WindowsElement name = session.FindElementByName("Sideload Packages");
-            Assert.IsNotNull(name);
-        }
-
-        [TestMethod]
-        public void Developer()
-        {
-            session.FindElementByName("Developer").Click();
-            Thread.Sleep(500);
-            WindowsElement name = session.FindElementByName("Developer Packages");
-            Assert.IsNotNull(name);
-        }
-
-        [TestMethod]
-        public void Framework()
-        {
-            session.FindElementByName("Framework").Click();
-            Thread.Sleep(500);
-            WindowsElement name = session.FindElementByName("Framework Packages");
-            Assert.IsNotNull(name);
-        }
-
-
-        [TestMethod]
-        public void System()
-        {
-            session.FindElementByName("System").Click();
-            Thread.Sleep(500);
-            WindowsElement name = session.FindElementByName("System Packages");
-            Assert.IsNotNull(name);
-        }
-
-
-
-        [TestMethod]
-        public void About()
-        {
-            session.FindElementByName("About").Click();
-            Thread.Sleep(500);
-            WindowsElement name = session.FindElementByName("MSIX Catalog");
-            Assert.IsNotNull(name);
-        }
-
-  
         [ClassInitialize]
         public static void ClassInitialize(TestContext context)
         {
-            // Create session to launch a MSIX window
             Setup(context);
-
-
-            //Assert.IsNotNull(calculatorResult);
         }
 
         [ClassCleanup]
@@ -119,9 +42,52 @@ namespace CalculatorTest
 
         }
 
-        private string GetCalculatorResultText()
+        [TestMethod]
+        public void NavigateMainTabs()
         {
-            return calculatorResult.Text.Replace("Display is", string.Empty).Trim();
+            
+            session.FindElementByName("Home").Click();
+            Thread.Sleep(500);
+            WindowsElement name = session.FindElementByName("MSIX Catalog");
+            Assert.IsNotNull(name);
+                    
+            var storeMenuItem = session.FindElementByName("Store");
+            Assert.IsNotNull(storeMenuItem, "Store Menu Item not found");
+            storeMenuItem.Click();
+            Thread.Sleep(500);
+            WindowsElement store = session.FindElementByAccessibilityId("TitleStorePackages");
+            Assert.IsNotNull(store, "Store Packages Title not found");
+
+            session.FindElementByName("Sideload").Click();
+            Thread.Sleep(500);
+            WindowsElement sdload = session.FindElementByAccessibilityId("TitleSideloadPackages");
+            Assert.IsNotNull(sdload);
+        
+            session.FindElementByName("Developer").Click();
+            Thread.Sleep(500);
+            WindowsElement dvlpr = session.FindElementByAccessibilityId("TitleDeveloperPackages");
+            Assert.IsNotNull(dvlpr);
+        
+            session.FindElementByName("Framework").Click();
+            Thread.Sleep(500);
+            WindowsElement fx = session.FindElementByAccessibilityId("TitleFrameworkPackages");
+            Assert.IsNotNull(fx);
+        
+            session.FindElementByName("System").Click();
+            Thread.Sleep(500);
+            WindowsElement sys = session.FindElementByAccessibilityId("TitleSystemPackages");
+            Assert.IsNotNull(sys);
+        }
+
+
+
+        [TestMethod]
+        public void About()
+        {
+            session.FindElementByName("About").Click();
+            Thread.Sleep(500);
+            WindowsElement name = session.FindElementByAccessibilityId("LabelVersion");
+            Assert.IsNotNull(name);
         }
     }
 }
