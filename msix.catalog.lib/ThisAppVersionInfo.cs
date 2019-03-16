@@ -116,16 +116,16 @@ namespace msix.catalog.lib
 
         public static string SignatureKind => OSVersionHelper.WindowsVersionHelper.HasPackageIdentity ? Package.Current.SignatureKind.ToString() : "";
 
-        private static AppInstallerInfo GetSafeAppInstallerInfo()
+        private static Uri GetSafeAppInstallerInfo()
         {
-            AppInstallerInfo result = null;
+            Uri result = null;
             try
             {
                 if (OSVersionHelper.WindowsVersionHelper.IsWindows10October2018OrGreater &&
                           OSVersionHelper.WindowsVersionHelper.HasPackageIdentity &&
                           Windows.Foundation.Metadata.ApiInformation.IsMethodPresent("Windows.ApplicationModel.Package", "GetAppInstallerInfo"))
                 {
-                    result =  Package.Current.GetAppInstallerInfo();
+                    result = WinRTMethods.GetAppInstallerInfoUri();
                 }
             }
             catch (Exception ex)
@@ -134,6 +134,8 @@ namespace msix.catalog.lib
             }
             return result;
         }
+
+       
 
 
         public static string AppInstallerUri
@@ -145,7 +147,7 @@ namespace msix.catalog.lib
                     var aiInfo = GetSafeAppInstallerInfo();
                     if (aiInfo != null)
                     {
-                        return aiInfo.Uri.ToString();
+                        return aiInfo.ToString();
                     }
                     else
                     {

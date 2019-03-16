@@ -84,15 +84,14 @@ namespace msix.catalog.lib
         public static string GetSafeInstallUri(Package p)
         {
             string result = string.Empty;
-            try
-            {
+            
                 if (OSVersionHelper.WindowsVersionHelper.IsWindows10October2018OrGreater &&
                     ApiInformation.IsMethodPresent("Windows.ApplicationModel.Package", "GetAppInstallerInfo"))
                 {
-                    AppInstallerInfo info = p.GetAppInstallerInfo();
-                    if (info != null)
+                    Uri aiUri= WinRTMethods.GetAppInstallerInfoUri(p);
+                    if (aiUri != null)
                     {
-                        result = info.Uri.ToString();
+                        result = aiUri.ToString();
                     }
                     else
                     {
@@ -103,11 +102,7 @@ namespace msix.catalog.lib
                 {
                     result = "not available on this platform";
                 }
-            }
-            catch (Exception)
-            {
-                result = "error getting appinstaller info";
-            }
+            
             return result;
         }
 

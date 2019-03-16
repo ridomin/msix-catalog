@@ -27,7 +27,7 @@
                 <TextBlock Text="{Binding PackageInfo.InstalledDate, FallbackValue='2019/01/01'}" />
                 <TextBlock Visibility="{Binding IsSideload, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <Hyperlink NavigateUri="{Binding PackageInfo.AppInstallerUri}">
-                        <TextBlock Text="{Binding PackageInfo.AppInstallerUri}" Foreground="White" />
+                        <TextBlock Text="{Binding PackageInfo.AppInstallerUri}"  />
                     </Hyperlink>
                 </TextBlock>
                 <StackPanel Orientation="Horizontal" Margin="5">
