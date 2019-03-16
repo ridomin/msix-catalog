@@ -25,7 +25,7 @@ namespace msix.catalog.wad.test
     {
         // Note: append /wd/hub to the URL if you're directing the test at Appium
         private const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
-        private const string AppId = "18656RidoMin.MSIXCatalog_vzj0fd0atvkjr!App";
+        private const string AppId = "18656RidoMin.MSIXCatalogNightly_0z5p9mqqb1pac!App";
 
         protected static WindowsDriver<WindowsElement> session;
         protected static WindowsDriver<WindowsElement> DesktopSession;
@@ -40,16 +40,13 @@ namespace msix.catalog.wad.test
                 DesiredCapabilities appCapabilities = new DesiredCapabilities();
                 appCapabilities.SetCapability("deviceName", "WindowsPC");
                 DesktopSession = null;
+
+                appCapabilities.SetCapability("app", AppId);
                 try
                 {
-                    appCapabilities.SetCapability("app", AppId);
                     DesktopSession = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
-
                 }
-                catch
-                {
-
-                }
+                catch { }
 
                 appCapabilities.SetCapability("app", "Root");
                 DesktopSession = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
