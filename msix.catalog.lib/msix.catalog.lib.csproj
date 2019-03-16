@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
-		<RootNamespace>msix_catalog_lib</RootNamespace>
+		<RootNamespace>msix.catalog.lib</RootNamespace>
     <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
 	</PropertyGroup>
 
