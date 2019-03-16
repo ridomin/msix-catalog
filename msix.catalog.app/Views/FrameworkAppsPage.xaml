@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
             <TextBlock Text="{Binding NumFrameworkPackages}" FontSize="24" Padding="5,0,0,0"/>
-            <TextBlock Text="Framework Packages" FontSize="24"  />
+            <TextBlock Text=" Framework Packages" FontSize="24"  AutomationProperties.AutomationId="TitleFrameworkPackages" />
         </StackPanel>
         <Rectangle  Grid.Row="1" Width="auto"  Fill="White" />
         <ScrollViewer Grid.Row="2">

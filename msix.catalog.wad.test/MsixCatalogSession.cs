@@ -19,13 +19,13 @@ using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Remote;
 using System;
 
-namespace CalculatorTest
+namespace msix.catalog.wad.test
 {
-    public class CalculatorSession
+    public class MsixCatalogSession
     {
         // Note: append /wd/hub to the URL if you're directing the test at Appium
         private const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
-        private const string AppId = "18656RidoMin.MSIXCatalog_vzj0fd0atvkjr!App";
+        private const string AppId = "18656RidoMin.MSIXCatalogNightly_0z5p9mqqb1pac!App";
 
         protected static WindowsDriver<WindowsElement> session;
         protected static WindowsDriver<WindowsElement> DesktopSession;
@@ -33,7 +33,6 @@ namespace CalculatorTest
 
         public static void Setup(TestContext context)
         {
-            // Launch Calculator application if it is not yet launched
             if (session == null)
             {
                 // Create a new session to bring up an instance of the Calculator application
@@ -41,26 +40,23 @@ namespace CalculatorTest
                 DesiredCapabilities appCapabilities = new DesiredCapabilities();
                 appCapabilities.SetCapability("deviceName", "WindowsPC");
                 DesktopSession = null;
+
+                appCapabilities.SetCapability("app", AppId);
                 try
                 {
-                    appCapabilities.SetCapability("app", AppId);
                     DesktopSession = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
-
                 }
-                catch
-                {
-
-                }
+                catch { }
 
                 appCapabilities.SetCapability("app", "Root");
                 DesktopSession = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
 
-                var CortanaWindow = DesktopSession.FindElementByName("MSIX Catalog - 0.1.1822.0");
-                var CortanaTopLevelWindowHandle = CortanaWindow.GetAttribute("NativeWindowHandle");
-                CortanaTopLevelWindowHandle = (int.Parse(CortanaTopLevelWindowHandle)).ToString("x"); // Convert to Hex
+                var mainWindow = DesktopSession.FindElementByAccessibilityId("MSIXCatalogMainWindow"); // DesktopSession.FindElementByName("MSIX Catalog - 0.1.1822.0");
+                var mainWindowHandle = mainWindow.GetAttribute("NativeWindowHandle");
+                mainWindowHandle = (int.Parse(mainWindowHandle)).ToString("x"); // Convert to Hex
 
                 appCapabilities = new DesiredCapabilities();
-                appCapabilities.SetCapability("appTopLevelWindow", CortanaTopLevelWindowHandle);
+                appCapabilities.SetCapability("appTopLevelWindow", mainWindowHandle);
                 session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
                 Assert.IsNotNull(session);
 
