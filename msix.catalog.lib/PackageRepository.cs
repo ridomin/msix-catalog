@@ -27,6 +27,7 @@ namespace msix.catalog.lib
                         Id = p.Id?.Name,
                         LogoUri = GetSafeLogo(p),
                         PackageName = p.DisplayName,
+                        PackageFullName = p.Id.FullName,
                         PFN = p.GetFirstAppUserModelId(),
                         Author = p.Id?.Publisher,
                         SignatureKind = p.SignatureKind.ToString(),

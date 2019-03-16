@@ -54,7 +54,7 @@ namespace msix.catalog.wad.test
             var storeMenuItem = session.FindElementByName("Store");
             Assert.IsNotNull(storeMenuItem, "Store Menu Item not found");
             storeMenuItem.Click();
-            Thread.Sleep(100);
+            Thread.Sleep(200);
             WindowsElement store = session.FindElementByAccessibilityId("TitleStorePackages");
             Assert.IsNotNull(store, "Store Packages Title not found");
 
@@ -64,7 +64,6 @@ namespace msix.catalog.wad.test
             Assert.IsNotNull(sdload);
         
             session.FindElementByName("Developer").Click();
-            Thread.Sleep(100);
             WindowsElement dvlpr = session.FindElementByAccessibilityId("TitleDeveloperPackages");
             Assert.IsNotNull(dvlpr);
         

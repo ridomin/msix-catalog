@@ -14,6 +14,8 @@ namespace msix.catalog.app.ViewModels
         public ICommand ViewManifestCommand { get; private set; }
         public ICommand OpenFolderCommand { get; private set; }
 
+        public ICommand NavigateToInstallLocationCommand { get; private set; }
+
         public PackageInfoViewModel() : this(
             new PackageInfo())
         {
@@ -25,6 +27,23 @@ namespace msix.catalog.app.ViewModels
             OpenCommand = new DelegateCommand<PackageInfoViewModel>(OpenApp, (o) => { return !string.IsNullOrWhiteSpace(packageInfo.PFN); } );
             ViewManifestCommand = new DelegateCommand<PackageInfoViewModel>(ViewManifest);
             OpenFolderCommand = new DelegateCommand<PackageInfoViewModel>(OpenFolder);
+            NavigateToInstallLocationCommand = new DelegateCommand<PackageInfoViewModel>(NavigateToInstallLocation, (o) => { return packageInfo.AppInstallerUri != null; });
+        }
+
+        private void NavigateToInstallLocation(PackageInfoViewModel p)
+        {
+            Uri appInstallerUri = new Uri(PackageInfo.AppInstallerUri);
+            string folderUri = $"{appInstallerUri.Scheme}://{appInstallerUri.DnsSafeHost}";
+            for (int i = 0; i < appInstallerUri.Segments.Length-1; i++)
+            {
+                folderUri += appInstallerUri.Segments[i];
+            }
+            ProcessStartInfo psi = new ProcessStartInfo()
+            {
+                UseShellExecute = true,
+                FileName = folderUri
+            };
+            Process.Start(psi);
         }
 
         public PackageInfo PackageInfo { get; private set; }
