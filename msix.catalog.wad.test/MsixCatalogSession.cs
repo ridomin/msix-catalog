@@ -19,7 +19,7 @@ using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Remote;
 using System;
 
-namespace CalculatorTest
+namespace msix.catalog.wad.test
 {
     public class MsixCatalogSession
     {

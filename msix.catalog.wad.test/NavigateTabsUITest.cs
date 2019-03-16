@@ -19,7 +19,7 @@ using OpenQA.Selenium.Appium.Windows;
 using System.Threading;
 using System;
 
-namespace CalculatorTest
+namespace msix.catalog.wad.test
 {
     [TestClass]
     public class NavigateTabsUITest : MsixCatalogSession
