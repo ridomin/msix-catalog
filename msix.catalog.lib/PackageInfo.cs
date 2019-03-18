@@ -19,5 +19,6 @@ namespace msix.catalog.lib
         public bool IsFramework { get; set; }
         public DateTime? InstalledDate { get; set; }
         public string InstallLocation { get; set; }
+        public string DisplayName { get; internal set; }
     }
 }
