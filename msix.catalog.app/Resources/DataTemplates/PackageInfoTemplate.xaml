@@ -25,8 +25,8 @@
                 </StackPanel>
                 <TextBlock Text="{Binding PackageInfo.Author}" />
                 <TextBlock Text="{Binding PackageInfo.InstalledDate, FallbackValue='2019/01/01'}" />
-                <TextBlock Text="{Binding PackageInfo.PFN}" />
                 <TextBlock Text="{Binding PackageInfo.PackageFullName}" />
+                <TextBlock Text="{Binding PackageInfo.PFN}" />
 
                 <TextBlock Visibility="{Binding IsSideload, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <Hyperlink NavigateUri="{Binding PackageInfo.AppInstallerUri}" Command="{Binding NavigateToInstallLocationCommand}">
