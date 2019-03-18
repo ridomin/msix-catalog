@@ -49,7 +49,7 @@ namespace msix.catalog.app.ViewModels
                         {
                             _developerPackages.Add(new PackageInfoViewModel(item));
                         }
-                        if (item.SignatureKind == "Developer")
+                        if (item.SignatureKind == "Developer" || item.SignatureKind=="Enteprise") //on RS3 sideloaded are not Developer
                         {
                             _sideloadedPackages.Add(new PackageInfoViewModel(item));
                         }
