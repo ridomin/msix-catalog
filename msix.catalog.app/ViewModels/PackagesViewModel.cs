@@ -20,12 +20,14 @@ namespace msix.catalog.app.ViewModels
         private static readonly ObservableCollection<PackageInfoViewModel> _storePackages = new ObservableCollection<PackageInfoViewModel>();
         private static readonly ObservableCollection<PackageInfoViewModel> _systemPackages = new ObservableCollection<PackageInfoViewModel>();
         private static readonly ObservableCollection<PackageInfoViewModel> _frameworkPackages = new ObservableCollection<PackageInfoViewModel>();
+        private static readonly ObservableCollection<PackageInfoViewModel> _enterprisePackages = new ObservableCollection<PackageInfoViewModel>();
 
         public ICollectionView SideloadedPackages { get; private set; }
         public ICollectionView DeveloperPackages { get; private set; }
         public ICollectionView StorePackages { get; private set; }
         public ICollectionView SystemPackages { get; private set; }
         public ICollectionView FrameworkPackages { get; private set; }
+        public ICollectionView EnterprisePackages { get; private set; }
 
         public PackagesViewModel()
         {
@@ -35,6 +37,7 @@ namespace msix.catalog.app.ViewModels
             this.StorePackages = new ListCollectionView(_storePackages.OrderByDescending(p => p.PackageInfo.InstalledDate).ToList());
             this.SystemPackages = new ListCollectionView(_systemPackages.OrderByDescending(p => p.PackageInfo.InstalledDate).ToList());
             this.FrameworkPackages = new ListCollectionView(_frameworkPackages.OrderByDescending(p => p.PackageInfo.InstalledDate).ToList());
+            this.EnterprisePackages = new ListCollectionView(_enterprisePackages.OrderByDescending(p => p.PackageInfo.InstalledDate).ToList());
         }
 
         private void PopulatePackages()
