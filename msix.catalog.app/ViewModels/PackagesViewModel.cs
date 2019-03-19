@@ -83,8 +83,8 @@ namespace msix.catalog.app.ViewModels
                 base.OnPropertyChanged("NumSideloadedPackages");
                 base.OnPropertyChanged("NumDeveloperPackages");
                 base.OnPropertyChanged("NumFrameworkPackages");
-                base.OnPropertyChanged("NumSystemPackages");
                 base.OnPropertyChanged("NumEnterprisePackages");
+                base.OnPropertyChanged("NumSystemPackages");
             }
         }
 
