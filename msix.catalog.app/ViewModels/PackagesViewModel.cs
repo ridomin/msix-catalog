@@ -52,7 +52,7 @@ namespace msix.catalog.app.ViewModels
                         {
                             _developerPackages.Add(new PackageInfoViewModel(item));
                         }
-                        if (item.SignatureKind == "Developer" || item.SignatureKind=="Enterprise") //on RS3 sideloaded are not Developer
+                        if (item.SignatureKind == "Developer")
                         {
                             _sideloadedPackages.Add(new PackageInfoViewModel(item));
                         }
@@ -63,6 +63,10 @@ namespace msix.catalog.app.ViewModels
                         if (item.SignatureKind == "System")
                         {
                             _systemPackages.Add(new PackageInfoViewModel(item));
+                        }
+                        if (item.SignatureKind == "Enterprise")
+                        {
+                            _enterprisePackages.Add(new PackageInfoViewModel(item));
                         }
                     }
                     else if (item.IsFramework == true)
@@ -80,6 +84,7 @@ namespace msix.catalog.app.ViewModels
                 base.OnPropertyChanged("NumDeveloperPackages");
                 base.OnPropertyChanged("NumFrameworkPackages");
                 base.OnPropertyChanged("NumSystemPackages");
+                base.OnPropertyChanged("NumEnterprisePackages");
             }
         }
 
@@ -88,6 +93,7 @@ namespace msix.catalog.app.ViewModels
         public int NumDeveloperPackages => _developerPackages.Count;
         public int NumFrameworkPackages => _frameworkPackages.Count;
         public int NumSystemPackages => _systemPackages.Count;
+        public int NumEnterprisePackages => _enterprisePackages.Count;
 
 
     }
