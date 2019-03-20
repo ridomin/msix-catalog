@@ -20,12 +20,14 @@ namespace msix.catalog.app.ViewModels
         private static readonly ObservableCollection<PackageInfoViewModel> _storePackages = new ObservableCollection<PackageInfoViewModel>();
         private static readonly ObservableCollection<PackageInfoViewModel> _systemPackages = new ObservableCollection<PackageInfoViewModel>();
         private static readonly ObservableCollection<PackageInfoViewModel> _frameworkPackages = new ObservableCollection<PackageInfoViewModel>();
+        private static readonly ObservableCollection<PackageInfoViewModel> _enterprisePackages = new ObservableCollection<PackageInfoViewModel>();
 
         public ICollectionView SideloadedPackages { get; private set; }
         public ICollectionView DeveloperPackages { get; private set; }
         public ICollectionView StorePackages { get; private set; }
         public ICollectionView SystemPackages { get; private set; }
         public ICollectionView FrameworkPackages { get; private set; }
+        public ICollectionView EnterprisePackages { get; private set; }
 
         public PackagesViewModel()
         {
@@ -35,6 +37,7 @@ namespace msix.catalog.app.ViewModels
             this.StorePackages = new ListCollectionView(_storePackages.OrderByDescending(p => p.PackageInfo.InstalledDate).ToList());
             this.SystemPackages = new ListCollectionView(_systemPackages.OrderByDescending(p => p.PackageInfo.InstalledDate).ToList());
             this.FrameworkPackages = new ListCollectionView(_frameworkPackages.OrderByDescending(p => p.PackageInfo.InstalledDate).ToList());
+            this.EnterprisePackages = new ListCollectionView(_enterprisePackages.OrderByDescending(p => p.PackageInfo.InstalledDate).ToList());
         }
 
         private void PopulatePackages()
@@ -49,7 +52,7 @@ namespace msix.catalog.app.ViewModels
                         {
                             _developerPackages.Add(new PackageInfoViewModel(item));
                         }
-                        if (item.SignatureKind == "Developer" || item.SignatureKind=="Enterprise") //on RS3 sideloaded are not Developer
+                        if (item.SignatureKind == "Developer")
                         {
                             _sideloadedPackages.Add(new PackageInfoViewModel(item));
                         }
@@ -60,6 +63,10 @@ namespace msix.catalog.app.ViewModels
                         if (item.SignatureKind == "System")
                         {
                             _systemPackages.Add(new PackageInfoViewModel(item));
+                        }
+                        if (item.SignatureKind == "Enterprise")
+                        {
+                            _enterprisePackages.Add(new PackageInfoViewModel(item));
                         }
                     }
                     else if (item.IsFramework == true)
@@ -76,6 +83,7 @@ namespace msix.catalog.app.ViewModels
                 base.OnPropertyChanged("NumSideloadedPackages");
                 base.OnPropertyChanged("NumDeveloperPackages");
                 base.OnPropertyChanged("NumFrameworkPackages");
+                base.OnPropertyChanged("NumEnterprisePackages");
                 base.OnPropertyChanged("NumSystemPackages");
             }
         }
@@ -85,6 +93,7 @@ namespace msix.catalog.app.ViewModels
         public int NumDeveloperPackages => _developerPackages.Count;
         public int NumFrameworkPackages => _frameworkPackages.Count;
         public int NumSystemPackages => _systemPackages.Count;
+        public int NumEnterprisePackages => _enterprisePackages.Count;
 
 
     }

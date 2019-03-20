@@ -13,7 +13,7 @@
                       WindowTransitionsEnabled="False"
                       WindowStartupLocation="CenterScreen"
                       Height="700"
-                      Width="900">
+                      Width="800">
 
     <controls:MetroWindow.DataContext>
         <viewModels:ShellViewModel />
