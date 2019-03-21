@@ -26,7 +26,8 @@ namespace msix.catalog.lib
                     {
                         Id = p.Id?.Name,
                         LogoUri = GetSafeLogo(p),
-                        PackageName = p.DisplayName,
+                        PackageName = p.Id.Name,
+                        DisplayName = p.DisplayName,
                         PackageFullName = p.Id.FullName,
                         PFN = p.GetFirstAppUserModelId(),
                         Author = p.Id?.Publisher,
@@ -86,8 +87,7 @@ namespace msix.catalog.lib
         {
             string result = string.Empty;
             
-                if (OSVersionHelper.WindowsVersionHelper.IsWindows10October2018OrGreater &&
-                    ApiInformation.IsMethodPresent("Windows.ApplicationModel.Package", "GetAppInstallerInfo"))
+                if (ApiInformation.IsMethodPresent("Windows.ApplicationModel.Package", "GetAppInstallerInfo"))
                 {
                     Uri aiUri= WinRTMethods.GetAppInstallerInfoUri(p);
                     if (aiUri != null)

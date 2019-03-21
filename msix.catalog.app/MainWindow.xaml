@@ -12,8 +12,8 @@
                       AutomationProperties.AutomationId="MSIXCatalogMainWindow"
                       WindowTransitionsEnabled="False"
                       WindowStartupLocation="CenterScreen"
-                      Height="800"
-                      Width="1024">
+                      Height="700"
+                      Width="800">
 
     <controls:MetroWindow.DataContext>
         <viewModels:ShellViewModel />
