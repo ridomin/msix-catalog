@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.IconPacks;
+﻿using Humanizer;
+using MahApps.Metro.IconPacks;
 using msix.catalog.app.Mvvm;
 using msix.catalog.lib;
 using System;
@@ -13,71 +14,119 @@ using System.Xml.Linq;
 
 namespace msix.catalog.app.ViewModels
 {
-	public class ShellViewModel : ViewModelBase
-	{
-		public ICommand RefreshCommand { get; private set; }
+    public class ShellViewModel : ViewModelBase
+    {
 
-		public static IList<PackageInfo> _cachedListOfPackages = new List<PackageInfo>();
-			   
+        public static IList<PackageInfo> _cachedListOfPackages = new List<PackageInfo>();
 
-		public string TotalPackages
-		{
-			get
-			{                
-				return _cachedListOfPackages.Count().ToString();
-			}
-		}
+        public string TotalPackages
+        {
+            get
+            {
+                return _cachedListOfPackages.Count().ToString();
+            }
+        }
+        private string startupTime = string.Empty;
 
-		public ShellViewModel()
-		{
-			// Build the menus
-			this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.HomeSolid }, Text = "Home", NavigationDestination = new Uri("Views/MainPage.xaml", UriKind.RelativeOrAbsolute) });
-			this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.ShoppingBagSolid }, Text = "StoreApps", NavigationDestination = new Uri("Views/StoreAppsPage.xaml", UriKind.RelativeOrAbsolute) });
-			this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.ColumnsSolid }, Text = "SideloadedApps",NavigationDestination = new Uri("Views/SideloadedAppsPage.xaml", UriKind.RelativeOrAbsolute) });
-			this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.UniversalAccessSolid }, Text = "DeveloperApps", NavigationDestination = new Uri("Views/DeveloperAppsPage.xaml", UriKind.RelativeOrAbsolute) });
-			this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.AddressBookSolid }, Text = "FrameworkApps", NavigationDestination = new Uri("Views/FrameworkAppsPage.xaml", UriKind.RelativeOrAbsolute) });
-			this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.HospitalSymbolSolid }, Text = "SystemApps", NavigationDestination = new Uri("Views/SystemAppsPage.xaml", UriKind.RelativeOrAbsolute) });
-
-			this.OptionsMenu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.InfoCircleSolid }, Text = "About", NavigationDestination = new Uri("Views/AboutPage.xaml", UriKind.RelativeOrAbsolute) });
-
-			RefreshCommand = new DelegateCommand<object>(Refresh, (o) => { return true; });
-
-			AllPackages = new NotifyTaskCompletion<IList<PackageInfo>>(PackageRepository.LoadAllInstalledApps());
-			AllPackages.PropertyChanged += AllPackages_PropertyChanged;
-		}
-
-		private void AllPackages_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-		{
-			if (e.PropertyName == "Result")
-			{
-				_cachedListOfPackages = AllPackages.Result;
-				base.OnPropertyChanged("TotalPackages");
-				base.OnPropertyChanged("PackagesLoaded");
-				base.OnPropertyChanged("PackagesLoading");
-			}
-		}
-
-		public NotifyTaskCompletion<IList<PackageInfo>> AllPackages { get; private set; }
-
-		public object GetItem(object uri)
-		{
-			return null == uri ? null : this.Menu.FirstOrDefault(m => m.NavigationDestination.Equals(uri));
-		}
-
-		public object GetOptionsItem(object uri)
-		{
-			return null == uri ? null : this.OptionsMenu.FirstOrDefault(m => m.NavigationDestination.Equals(uri));
-		}
-
-		private void Refresh(object o)
-		{
-            AllPackages = new NotifyTaskCompletion<IList<PackageInfo>>(PackageRepository.LoadAllInstalledApps());
-            AllPackages.PropertyChanged += AllPackages_PropertyChanged;
+        public string StartUpTime
+        {
+            get => startupTime;
+            set => SetProperty(ref startupTime, value);
         }
 
-		public bool PackagesLoaded => _cachedListOfPackages.Count() > 0;
+        public ShellViewModel()
+        {
+            // Build the menus
+            this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.HomeSolid }, Text = "Home", NavigationDestination = new Uri("Views/MainPage.xaml", UriKind.RelativeOrAbsolute) });
+            this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.ShoppingBagSolid }, Text = "Store", NavigationDestination = new Uri("Views/StoreAppsPage.xaml", UriKind.RelativeOrAbsolute) });
+            this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.ColumnsSolid }, Text = "Sideload", NavigationDestination = new Uri("Views/SideloadedAppsPage.xaml", UriKind.RelativeOrAbsolute) });
+            this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.UniversalAccessSolid }, Text = "Developer", NavigationDestination = new Uri("Views/DeveloperAppsPage.xaml", UriKind.RelativeOrAbsolute) });
+            this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.AddressBookSolid }, Text = "Framework", NavigationDestination = new Uri("Views/FrameworkAppsPage.xaml", UriKind.RelativeOrAbsolute) });
+            this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.PiggyBankSolid}, Text = "Enterprise", NavigationDestination = new Uri("Views/EnterpriseAppsPage.xaml", UriKind.RelativeOrAbsolute) });
+            this.Menu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.HospitalSymbolSolid }, Text = "System", NavigationDestination = new Uri("Views/SystemAppsPage.xaml", UriKind.RelativeOrAbsolute) });
 
-		public bool PackagesLoading => _cachedListOfPackages.Count() < 1;
+            this.OptionsMenu.Add(new MenuItem() { Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.InfoCircleSolid }, Text = "About", NavigationDestination = new Uri("Views/AboutPage.xaml", UriKind.RelativeOrAbsolute) });
+
+            AllPackages = new NotifyTaskCompletion<IList<PackageInfo>>(PackageRepository.LoadAllInstalledAppsAsync());
+            AllPackages.PropertyChanged += AllPackages_PropertyChanged;
+        }
+        public NotifyTaskCompletion<IList<PackageInfo>> AllPackages { get; private set; }
+
+        private void AllPackages_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Result")
+            {
+                _cachedListOfPackages = AllPackages.Result;
+                base.OnPropertyChanged("TotalPackages");
+                base.OnPropertyChanged("PackagesLoaded");
+                base.OnPropertyChanged("PackagesLoading");
+                base.OnPropertyChanged("AllPackagesStats");
+                base.OnPropertyChanged("SideloadPublisherStats");
+                base.OnPropertyChanged("UpdatedInTheLastDayStats");
+                base.OnPropertyChanged("DistinctPublishers");
+            }
+        }
+
+        public List<string> DistinctPublishers = _cachedListOfPackages
+                                                  .Where(p => p.SignatureKind == "Developer")
+                                                  .Select(p => p.Author).Distinct().ToList<string>();
+        
+        public object GetItem(object uri)
+        {
+            return null == uri ? null : this.Menu.FirstOrDefault(m => m.NavigationDestination.Equals(uri));
+        }
+
+        public object GetOptionsItem(object uri)
+        {
+            return null == uri ? null : this.OptionsMenu.FirstOrDefault(m => m.NavigationDestination.Equals(uri));
+        }
+
+        public bool PackagesLoaded => _cachedListOfPackages.Count() > 0;
+
+        public bool PackagesLoading => _cachedListOfPackages.Count() < 1;
+
+        public string AllPackagesStats {
+            get
+            {
+                int numStorePackages = _cachedListOfPackages.Where(p => p.SignatureKind == "Store" && p.IsFramework==false).Count();
+                int numFrameworkPackages = _cachedListOfPackages.Where(p => p.IsFramework == true).Count();
+                int numSideloadPackages = _cachedListOfPackages.Where(p => p.SignatureKind == "Developer").Count();
+                int numDevPackages = _cachedListOfPackages.Where(p => p.SignatureKind == "None").Count();
+                return $"{numStorePackages} apps from the Store, {numFrameworkPackages} framework packages, {numSideloadPackages} sideloaded and {numDevPackages} in development.";
+            }
+        }
+
+        public string SideloadPublisherStats
+        {
+            get
+            {
+                var sideloadedPackages = _cachedListOfPackages.Where(p => p.SignatureKind == "Developer");
+                int numSideloadPackages = sideloadedPackages.Count();
+                int numPublishers = sideloadedPackages
+                                    .Select(p => p.Author)
+                                    .Distinct()
+                                    .Count();
+                int numAppInstallerApps = sideloadedPackages.Where(p => !string.IsNullOrEmpty(p.AppInstallerUri)).Count();
+                return $"{numSideloadPackages} apps from {numPublishers} different publishers. {numAppInstallerApps} using AppInstaller.";
+            }
+        }
+
+        public string UpdatedInTheLastDayStats
+        {
+            get
+            {
+                int numAppsUpdatedLast24h = _cachedListOfPackages.Where(p => p.InstalledDate > DateTime.Now.AddDays(-1)).Count();
+                var lastUpdate = _cachedListOfPackages
+                                    .Where(p=>p.InstalledDate.HasValue==true)
+                                    .OrderByDescending(p => p.InstalledDate.Value).FirstOrDefault();
+                TimeSpan timeSinceLastUpdate = TimeSpan.FromSeconds(0);
+                if (lastUpdate != null)
+                {
+                    timeSinceLastUpdate = DateTime.Now.Subtract(lastUpdate.InstalledDate.Value);
+                }
+                return $"{numAppsUpdatedLast24h} apps updated in the latest 24 hours. Last update {timeSinceLastUpdate.Humanize(2,false)} ago.";
+            }
+        }
 
 	}
 }

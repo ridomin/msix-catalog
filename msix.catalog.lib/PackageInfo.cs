@@ -11,6 +11,7 @@ namespace msix.catalog.lib
         public string Version { get; set; }
         public string Author { get; set; }
         public string PackageName { get; set; }
+        public string PackageFullName { get; set; }
         public string Architecture { get; set; }
         public string AppInstallerUri { get; set; }
         public string SignatureKind { get; set; }
@@ -18,5 +19,6 @@ namespace msix.catalog.lib
         public bool IsFramework { get; set; }
         public DateTime? InstalledDate { get; set; }
         public string InstallLocation { get; set; }
+        public string DisplayName { get; internal set; }
     }
 }

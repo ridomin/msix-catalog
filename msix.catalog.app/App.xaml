@@ -11,9 +11,13 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Steel.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseDark.xaml" />
-                <ResourceDictionary Source="Views/PackageInfoTemplate.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Green.xaml" />
+                
+                <!-- Custom resources for this application -->
+                <ResourceDictionary Source="Resources/DataTemplates/PackageInfoTemplate.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            
+            <!-- Custom Styles -->
             <Style TargetType="{x:Type Controls:WindowButtonCommands}" BasedOn="{StaticResource MahApps.Metro.Styles.WindowButtonCommands.Win10}" />
             <Style TargetType="{x:Type Page}" BasedOn="{StaticResource MetroPage}" x:Key="PageStyle">
                 <Setter Property="Background" Value="{DynamicResource AccentColorBrush4}" />

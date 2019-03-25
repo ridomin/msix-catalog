@@ -1,18 +1,12 @@
-﻿using MahApps.Metro.Controls;
+﻿using Humanizer;
+using MahApps.Metro.Controls;
 using msix.catalog.app.ViewModels;
+using msix.catalog.lib;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.Reflection;
 using System.Windows;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace msix.catalog.app
 {
@@ -28,8 +22,15 @@ namespace msix.catalog.app
             Navigation.Navigation.Frame = new System.Windows.Controls.Frame() { NavigationUIVisibility = NavigationUIVisibility.Hidden };
             Navigation.Navigation.Frame.Navigated += SplitViewFrame_OnNavigated;
 
-            // Navigate to the home page.
-            this.Loaded += (sender, args) => Navigation.Navigation.Navigate(new Uri("Views/MainPage.xaml", UriKind.RelativeOrAbsolute));
+            
+            this.Loaded += MainWindow_Loaded;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            Navigation.Navigation.Navigate(new Uri("Views/MainPage.xaml", UriKind.RelativeOrAbsolute));
+            ((ShellViewModel)this.DataContext).StartUpTime = App.Clock.Elapsed.Humanize(2, false);
+            this.Title += $"{ThisAppVersionInfo.ProductVersion} [{ThisAppVersionInfo.GetDeploymentType()}] [{ThisAppVersionInfo.GetDotNetInfo()}]";
         }
 
         private void SplitViewFrame_OnNavigated(object sender, NavigationEventArgs e)

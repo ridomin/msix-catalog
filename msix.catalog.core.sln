@@ -7,10 +7,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "msix.catalog.app.core", "ms
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EFA479FB-8E5B-4527-904F-9DEF9F3E4E6E}"
 	ProjectSection(SolutionItems) = preProject
+		azure-pipelines.yml = azure-pipelines.yml
 		nuget.config = nuget.config
+		UpdateManifest.ps1 = UpdateManifest.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "msix.catalog.lib", "msix.catalog.lib\msix.catalog.lib.csproj", "{95860CEA-AFC0-42E7-A02F-CAC8857613F0}"
+EndProject
+Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "msix.catalog.package.core", "msix.catalog.package.core\msix.catalog.package.core.wapproj", "{42CD17C5-9F44-4279-80C8-5E6615AD29A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,6 +50,24 @@ Global
 		{95860CEA-AFC0-42E7-A02F-CAC8857613F0}.Release|x64.Build.0 = Release|Any CPU
 		{95860CEA-AFC0-42E7-A02F-CAC8857613F0}.Release|x86.ActiveCfg = Release|Any CPU
 		{95860CEA-AFC0-42E7-A02F-CAC8857613F0}.Release|x86.Build.0 = Release|Any CPU
+		{42CD17C5-9F44-4279-80C8-5E6615AD29A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42CD17C5-9F44-4279-80C8-5E6615AD29A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42CD17C5-9F44-4279-80C8-5E6615AD29A4}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{42CD17C5-9F44-4279-80C8-5E6615AD29A4}.Debug|x64.ActiveCfg = Debug|x64
+		{42CD17C5-9F44-4279-80C8-5E6615AD29A4}.Debug|x64.Build.0 = Debug|x64
+		{42CD17C5-9F44-4279-80C8-5E6615AD29A4}.Debug|x64.Deploy.0 = Debug|x64
+		{42CD17C5-9F44-4279-80C8-5E6615AD29A4}.Debug|x86.ActiveCfg = Debug|x86
+		{42CD17C5-9F44-4279-80C8-5E6615AD29A4}.Debug|x86.Build.0 = Debug|x86
+		{42CD17C5-9F44-4279-80C8-5E6615AD29A4}.Debug|x86.Deploy.0 = Debug|x86
+		{42CD17C5-9F44-4279-80C8-5E6615AD29A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42CD17C5-9F44-4279-80C8-5E6615AD29A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42CD17C5-9F44-4279-80C8-5E6615AD29A4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{42CD17C5-9F44-4279-80C8-5E6615AD29A4}.Release|x64.ActiveCfg = Release|x64
+		{42CD17C5-9F44-4279-80C8-5E6615AD29A4}.Release|x64.Build.0 = Release|x64
+		{42CD17C5-9F44-4279-80C8-5E6615AD29A4}.Release|x64.Deploy.0 = Release|x64
+		{42CD17C5-9F44-4279-80C8-5E6615AD29A4}.Release|x86.ActiveCfg = Release|x86
+		{42CD17C5-9F44-4279-80C8-5E6615AD29A4}.Release|x86.Build.0 = Release|x86
+		{42CD17C5-9F44-4279-80C8-5E6615AD29A4}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

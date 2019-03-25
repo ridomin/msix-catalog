@@ -11,15 +11,22 @@
     <Page.DataContext>
         <viewModels:PackagesViewModel />
     </Page.DataContext>
-        
+
     <Grid DataContext="{Binding}">
-        <StackPanel Orientation="Vertical">
-            <TextBlock Text="Sideloaded Apps" FontSize="24" Margin="5" />
-            <ListView ItemsSource="{Binding SideloadedPackages}" 
-                      ItemTemplate="{StaticResource PackageInfoTemplate}"
-                      VerticalContentAlignment="Top"
-                      ScrollViewer.VerticalScrollBarVisibility="Auto" 
-                      MaxHeight="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Grid}},Path=ActualHeight}" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <TextBlock Text="{Binding NumSideloadedPackages}" FontSize="24" Padding="5,0,0,0"/>
+            <TextBlock Text=" Sideload Packages" FontSize="24"  AutomationProperties.AutomationId="TitleSideloadPackages"/>
         </StackPanel>
+        <Rectangle  Grid.Row="1" Width="auto"  Fill="White" />
+        <ScrollViewer Grid.Row="2">
+            <ItemsControl ItemsSource="{Binding SideloadedPackages}" 
+                ItemTemplate="{StaticResource PackageInfoTemplate}"
+                VerticalContentAlignment="Top" />
+        </ScrollViewer>
     </Grid>
 </Page>

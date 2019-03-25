@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace msix.catalog.app
 {
-
     public enum ActivateOptions
-
     {
         None = 0,
         DesignMode = 0x1,
@@ -25,7 +19,7 @@ namespace msix.catalog.app
     {
         IntPtr ActivateApplication(String appUserModelId, String arguments, ActivateOptions options, out UInt32 processId);
         IntPtr ActivateForFile(String appUserModelId, IntPtr itemArray, String verb, out UInt32 processId);
-        IntPtr ActivateForProtocol(String appUserModelId,  IntPtr itemArray, out UInt32 processId);
+        IntPtr ActivateForProtocol(String appUserModelId, IntPtr itemArray, out UInt32 processId);
     }
 
     [ComImport]
@@ -60,8 +54,6 @@ namespace msix.catalog.app
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
             return 0;
-            
         }
     }
-
 }

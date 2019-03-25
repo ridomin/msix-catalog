@@ -1,7 +1,11 @@
-﻿using System;
+﻿using msix.catalog.app.ViewModels;
+using msix.catalog.lib;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -15,11 +19,20 @@ namespace msix.catalog.app
     public partial class App : Application
     {
         public static Microsoft.ApplicationInsights.TelemetryClient TelemetryClient = new Microsoft.ApplicationInsights.TelemetryClient();
+
+        public static Stopwatch Clock = Stopwatch.StartNew();
+
         public App()
         {
             this.Startup += App_Startup;
             this.Exit += App_Exit;
+            this.LoadCompleted += App_LoadCompleted;
             this.DispatcherUnhandledException += App_DispatcherUnhandledException;
+        }
+
+        private void App_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+            Clock.Stop();
         }
 
         private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
@@ -45,9 +58,11 @@ namespace msix.catalog.app
             TelemetryClient.Context.Session.Id = Guid.NewGuid().ToString();
             TelemetryClient.Context.Device.OperatingSystem = Environment.OSVersion.ToString();
             TelemetryClient.Context.Component.Version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-
+            TelemetryClient.Context.GlobalProperties.Add("DeploymentType", ThisAppVersionInfo.GetDeploymentType());
             // Log a page view:
             TelemetryClient.TrackTrace("App Start");
         }
+
+       
     }
 }

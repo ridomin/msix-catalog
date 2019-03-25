@@ -7,10 +7,12 @@
                       xmlns:viewModels="clr-namespace:msix.catalog.app.ViewModels"
                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                       mc:Ignorable="d"
-                      Title="MSIX Catalog"
+                      Title="MSIX Catalog - "
+                      TitleCaps="False"
+                      AutomationProperties.AutomationId="MSIXCatalogMainWindow"
                       WindowTransitionsEnabled="False"
                       WindowStartupLocation="CenterScreen"
-                      Height="650"
+                      Height="700"
                       Width="800">
 
     <controls:MetroWindow.DataContext>
@@ -18,7 +20,7 @@
     </controls:MetroWindow.DataContext>
 
     <controls:MetroWindow.LeftWindowCommands>
-        <controls:WindowCommands ShowSeparators="False">
+        <controls:WindowCommands ShowSeparators="True">
             <Button x:Name="GoBackButton"
                     Width="{Binding ElementName=HamburgerMenuControl, Path=CompactPaneLength}"
                     Click="GoBack_OnClick">
@@ -28,11 +30,13 @@
     </controls:MetroWindow.LeftWindowCommands>
 
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
         <Grid.Resources>
 
-            <DataTemplate x:Key="MenuItemTemplate"
-                          DataType="{x:Type viewModels:MenuItem}">
+            <DataTemplate x:Key="MenuItemTemplate" DataType="{x:Type viewModels:MenuItem}">
                 <Grid Height="48">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="48" />
@@ -53,16 +57,20 @@
         </Grid.Resources>
 
         <controls:HamburgerMenu x:Name="HamburgerMenuControl"
-                                IsPaneOpen="False"
+                                IsPaneOpen="True"
                                 ItemsSource="{Binding Menu}"
                                 OptionsItemsSource="{Binding OptionsMenu}"
                                 ItemInvoked="HamburgerMenuControl_OnItemInvoked"
                                 ItemTemplate="{StaticResource MenuItemTemplate}"
                                 OptionsItemTemplate="{StaticResource MenuItemTemplate}"
-                                DisplayMode="CompactInline" />
+                                DisplayMode="CompactInline" 
+                                Grid.Row="0"/>
+        <StatusBar Grid.Row="1">
+            <StatusBarItem>Startup time:</StatusBarItem>
+            <StatusBarItem Content="{Binding StartUpTime}" />
+        </StatusBar>
 
     </Grid>
-
 </controls:MetroWindow>
 
 
