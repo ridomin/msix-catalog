@@ -100,6 +100,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_0D133C70E9F54556B43FC624A280B561"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0D1D632D8B1AF920D3E5F7E4FE71B5C8"
         "OwnerKey" = "8:_A128F688666F4DEF8C1971CC2B45D2BC"
         "MsmSig" = "8:_UNDEFINED"
@@ -6846,6 +6852,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0D133C70E9F54556B43FC624A280B561"
+            {
+            "SourcePath" = "8:..\\msix.catalog.app\\AppPackage.ico"
+            "TargetName" = "8:AppPackage.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_84C9FDCD884D46B59A3FD5D188510997"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0D1D632D8B1AF920D3E5F7E4FE71B5C8"
             {
             "AssemblyRegister" = "3:1"
@@ -13176,7 +13202,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MSIX Catalog"
         "ProductCode" = "8:{969B6691-A060-4F10-9615-ACD149986CF8}"
-        "PackageCode" = "8:{12618776-9A4E-4B25-98DA-F8999692B836}"
+        "PackageCode" = "8:{7EEBF444-C3BC-4571-8725-1C60FCE291CB}"
         "UpgradeCode" = "8:{356AC631-A1FB-46CD-BCC5-DEDC69619007}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -13307,7 +13333,7 @@
             "Target" = "8:_A128F688666F4DEF8C1971CC2B45D2BC"
             "Folder" = "8:_24D60370F9004E6EB8C498CF01E8DF39"
             "WorkingFolder" = "8:_84C9FDCD884D46B59A3FD5D188510997"
-            "Icon" = "8:"
+            "Icon" = "8:_0D133C70E9F54556B43FC624A280B561"
             "Feature" = "8:"
             }
         }
