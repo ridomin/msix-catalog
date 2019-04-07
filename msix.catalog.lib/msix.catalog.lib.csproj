@@ -3,6 +3,7 @@
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<RootNamespace>msix.catalog.lib</RootNamespace>
     <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
+    <Platforms>AnyCPU;x86</Platforms>
 	</PropertyGroup>
 
 	<PropertyGroup>
