@@ -36,16 +36,17 @@
   <PropertyGroup>
     <ProjectGuid>79223a6c-f495-4c85-8543-fadeaff92526</ProjectGuid>
     <TargetPlatformVersion>10.0.17763.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <EntryPointProjectUniqueName>..\msix.catalog.app\msix.catalog.app.net.csproj</EntryPointProjectUniqueName>
-    <GenerateAppInstallerFile>True</GenerateAppInstallerFile>
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
-    <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <AppInstallerUri>https://msix-catalog.azurewebsites.net/AppxPackages</AppInstallerUri>
     <AppInstallerUpdateFrequency>1</AppInstallerUpdateFrequency>
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
     <AppxPackageSigningEnabled>true</AppxPackageSigningEnabled>
+    <PackageCertificateThumbprint>9B49D183108CEA06463256C3AA5BF20F6D03F6D0</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <AppxBundle>Always</AppxBundle>
