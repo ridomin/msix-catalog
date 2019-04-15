@@ -38,9 +38,12 @@
         <StackPanel Orientation="Horizontal" 
                     Margin="12" 
                     Visibility="{Binding PackagesLoaded, Converter={StaticResource BooleanToVisibilityConverter}}">
-            <TextBlock Text=" Inspect the " FontSize="20" />
-            <TextBlock  HorizontalAlignment="Left" Text="{Binding TotalPackages}" FontSize="20" FontWeight="ExtraBold" />
-            <TextBlock Text=" packages available in this machine." FontSize="20" />
+
+            <TextBlock FontSize="20">
+                <Run Text="Inspect the" />
+                <Run Text="{Binding TotalPackages, Mode=OneWay}" FontWeight="ExtraBold" />
+                <Run Text="packages available in this machine."/>
+            </TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal" 
                     Margin="10" 
