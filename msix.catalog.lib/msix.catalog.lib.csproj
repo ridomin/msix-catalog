@@ -15,9 +15,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.17763.141-preview" />
-	  <PackageReference Include="OSVersionHelper" Version="1.0.9" />
-	  <PackageReference Include="System.Runtime.WindowsRuntime" Version="4.6.0-preview4.19212.13" />
-	  <PackageReference Include="System.Runtime.WindowsRuntime.UI.Xaml" Version="4.6.0-preview4.19212.13" />
+	  <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.17763.1000-preview" />
+	  <PackageReference Include="OSVersionHelper" Version="1.0.10" />
 	</ItemGroup>
 </Project>
