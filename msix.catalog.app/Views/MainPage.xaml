@@ -83,13 +83,13 @@
             </Border>
         </StackPanel>
         <StackPanel Orientation="Vertical">
-            <ItemsControl ItemsSource="{Binding DistinctPublishers}">
+            <!--<ItemsControl ItemsSource="{Binding DistinctPublishers}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding}" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
-            </ItemsControl>
+            </ItemsControl>-->
         </StackPanel>
     </StackPanel>
 </Page>

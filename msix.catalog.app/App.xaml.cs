@@ -1,4 +1,5 @@
-﻿using msix.catalog.app.ViewModels;
+﻿using Microsoft.ApplicationInsights.DataContracts;
+using msix.catalog.app.ViewModels;
 using msix.catalog.lib;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,10 @@ namespace msix.catalog.app
         private void App_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
             Clock.Stop();
+            var eventTelemetry = new EventTelemetry("StartupPerf");
+            eventTelemetry.Metrics.Add("startupTime", Clock.ElapsedMilliseconds);
+            eventTelemetry.Properties.Add("DeploymentType", ThisAppVersionInfo.GetDeploymentType());
+            TelemetryClient.TrackEvent(eventTelemetry);
         }
 
         private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)

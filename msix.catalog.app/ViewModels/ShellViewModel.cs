@@ -63,13 +63,11 @@ namespace msix.catalog.app.ViewModels
                 base.OnPropertyChanged("AllPackagesStats");
                 base.OnPropertyChanged("SideloadPublisherStats");
                 base.OnPropertyChanged("UpdatedInTheLastDayStats");
-                base.OnPropertyChanged("DistinctPublishers");
+               // base.OnPropertyChanged("DistinctPublishers");
             }
         }
 
-        public List<string> DistinctPublishers = _cachedListOfPackages
-                                                  .Where(p => p.SignatureKind == "Developer")
-                                                  .Select(p => p.Author).Distinct().ToList<string>();
+        //public List<string> DistinctPublishers = _cachedListOfPackages.Where(p => p.SignatureKind == "Developer").Select(p => p.Author).Distinct().ToList<string>();
         
         public object GetItem(object uri)
         {
