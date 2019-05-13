@@ -40,7 +40,7 @@ strategy:
       MsixPackageDisplayName: MSIX Catalog Core (CD)
       MsixManifest: msix.catalog.package.core\package.appxmanifest
       MsixBuildMode: SideLoadOnly
-	Channel_CORE_PROD:
+    Channel_CORE_PROD:
       Solution: msix.catalog.core.sln
       Channel_Name: CORE_PROD
       DistURL: https://not/used
