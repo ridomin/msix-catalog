@@ -19,8 +19,8 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     msbuildArguments: '/restore /p:AppxPackageSigningEnabled=false;GenerateAppInstallerFile=false'
-
- - task: PublishPipelineArtifact@0
-    inputs:
-      artifactName: $(solution)
-      targetPath: '$(build.artifactstagingdirectory)'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: '$(solution)'
+    publishLocation: 'Container'
