@@ -16,15 +16,10 @@ steps:
 - task: NuGetToolInstaller@0
   inputs:
     versionSpec: '4.9.3' 
-
-- task: NuGetCommand@2
-  inputs:
-    command: 'restore' 
-    restoreSolution: '$(solution)' 
-    
+  
 - task: MSBuild@1
   inputs:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    msbuildArguments: '/p:AppxPackageSigningEnabled=false;GenerateAppInstallerFile=false'
+    msbuildArguments: '/restore /p:AppxPackageSigningEnabled=false;GenerateAppInstallerFile=false'
