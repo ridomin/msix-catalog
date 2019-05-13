@@ -13,10 +13,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- task: NuGetToolInstaller@0
-  inputs:
-    versionSpec: '4.9.3' 
-  
+
 - task: MSBuild@1
   inputs:
     solution: '$(solution)'
