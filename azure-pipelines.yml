@@ -30,7 +30,7 @@ strategy:
       MsixPackageDisplayName: MSIX Catalog (CD)
       MsixManifest: msix.catalog.package.net\package.appxmanifest
     Channel_CORE_CD:
-      Solution: msix.catalog.core.sln'
+      Solution: msix.catalog.core.sln
       Channel_Name: CORE_CD
       DistURL: https://msixcatalog.azurewebsites.net/netcore3
       MsixPublisherId: CN=RidoTheDev
@@ -71,7 +71,7 @@ steps:
   
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
-  displayName: 'Publishing..'
+    PathtoPublish: $(Build.ArtifactStagingDirectory)
+    ArtifactName: $(Channel_Name)
+    publishLocation: Container
+  displayName: CopyingArtifacts
