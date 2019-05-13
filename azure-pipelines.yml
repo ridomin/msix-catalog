@@ -13,7 +13,6 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-
 - task: MSBuild@1
   inputs:
     solution: '$(solution)'
