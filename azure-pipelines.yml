@@ -20,6 +20,7 @@ strategy:
       MsixPublisherId: CN=RidoTheDev
       MsixPackageId: MSIXCatalog.CD
       MsixPackageDisplayName: MSIX Catalog (CD)
+      MsixManifest:'msix.catalog.package.net\package.appxmanifest'
     Channel_FX_PROD:
       Solution: 'msix.catalog.net.sln'
       Channel_Name: FX_PROD
@@ -27,6 +28,7 @@ strategy:
       MsixPublisherId: CN=FD784322-3D44-4DA4-9F73-0E23D5DF0893
       MsixPackageId: 18656RidoMin.MSIXCatalog
       MsixPackageDisplayName: MSIX Catalog (CD)
+      MsixManifest:'msix.catalog.package.net\package.appxmanifest'
     Channel_CORE_CD:
       Solution: 'msix.catalog.core.sln'
       Channel_Name: CORE_CD
@@ -34,6 +36,15 @@ strategy:
       MsixPublisherId: CN=RidoTheDev
       MsixPackageId: MSIXCatalog.CoreCD
       MsixPackageDisplayName: MSIX Catalog Core (CD)
+	  MsixManifest:'msix.catalog.package.core\package.appxmanifest'
+    Channel_CORE_PROD:
+      Solution: 'msix.catalog.core.sln'
+      Channel_Name: CORE_PROD
+      DistURL: https://not/used
+      MsixPublisherId: CN=FD784322-3D44-4DA4-9F73-0E23D5DF0893
+      MsixPackageId: 18656RidoMin.MSIXCatalog
+      MsixPackageDisplayName: MSIX Catalog Core
+	  MsixManifest:'msix.catalog.package.core\package.appxmanifest'
 
 steps:
 - task: DotNetCoreCLI@2
@@ -45,6 +56,17 @@ steps:
 
 - script: nbgv cloud -c
   displayName: Set Version
+
+- powershell: |
+    # Update appxmanifest. This must be done before build.
+    # Set the per-channel values into the appxmanifest, replacing the checked-in values
+    [xml]$manifest= get-content "$(MsixManifest)"
+    $manifest.Package.Identity.Version = "$(GitBuildVersionSimple).0"
+    $manifest.Package.Identity.Name = "$(MsixPackageId)"
+    $manifest.Package.Identity.Publisher = "$(MsixPublisherId)"
+    $manifest.Package.Properties.DisplayName = "$(MsixPackageDisplayName)"
+    $manifest.Package.Applications.Application.VisualElements.DisplayName = "$(MsixPackageDisplayName)"
+    $manifest.save("$(MsixManifest)")
 
 - task: MSBuild@1
   inputs:
