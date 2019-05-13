@@ -74,7 +74,7 @@ steps:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    msbuildArguments: '/restore /p:AppxPackageSigningEnabled=false;GenerateAppInstallerFile=$(MsixGenerateAppInstaller);AppxPackageDir=$(Build.ArtifactStagingDirectory)/AppxPackages;AppInstallerUri=$(DistURL);UapAppxPackageBuildMode=$(MsixBuildMode)'
+    msbuildArguments: '/restore /p:AppxPackageSigningEnabled=false;GenerateAppInstallerFile=$(MsixGenerateAppInstaller);AppxPackageDir=$(Build.ArtifactStagingDirectory);AppInstallerUri=$(DistURL);UapAppxPackageBuildMode=$(MsixBuildMode)'
   displayName: 'Building..'
   
 - task: PublishBuildArtifacts@1

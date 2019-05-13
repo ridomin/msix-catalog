@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" IgnorableNamespaces="uap rescap">
-  <Identity Name="18656RidoMin.MSIXCatalog" Publisher="CN=FD784322-3D44-4DA4-9F73-0E23D5DF0893" Version="0.0.1.1" />
+  <Identity Name="MSIXCatalog.local" Publisher="CN=FD784322-3D44-4DA4-9F73-0E23D5DF0893" Version="0.0.1.1" />
   <Properties>
     <DisplayName>MSIX Catalog</DisplayName>
     <PublisherDisplayName>Rido Min</PublisherDisplayName>
