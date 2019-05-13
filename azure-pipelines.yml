@@ -18,9 +18,9 @@ steps:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    msbuildArguments: '/restore /p:AppxPackageSigningEnabled=false;GenerateAppInstallerFile=false'
+    msbuildArguments: '/restore /p:AppxPackageSigningEnabled=false;GenerateAppInstallerFile=false;AppxPackageDir=$(Build.ArtifactStagingDirectory)\AppxPackages'
 
  - task: PublishPipelineArtifact@0
     inputs:
-      artifactName: $(solution)
+      artifactName: 'drop'
       targetPath: '$(build.artifactstagingdirectory)'
