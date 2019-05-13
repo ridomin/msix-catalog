@@ -21,6 +21,7 @@ strategy:
       MsixPackageId: MSIXCatalog.CD
       MsixPackageDisplayName: MSIX Catalog (CD)
       MsixManifest: msix.catalog.package.net\package.appxmanifest
+      MsixBuildMode: SideLoadOnly
     Channel_FX_PROD:
       Solution: msix.catalog.net.sln
       Channel_Name: FX_PROD
@@ -29,6 +30,7 @@ strategy:
       MsixPackageId: 18656RidoMin.MSIXCatalog
       MsixPackageDisplayName: MSIX Catalog (CD)
       MsixManifest: msix.catalog.package.net\package.appxmanifest
+      MsixBuildMode: CI
     Channel_CORE_CD:
       Solution: msix.catalog.core.sln
       Channel_Name: CORE_CD
@@ -37,7 +39,8 @@ strategy:
       MsixPackageId: MSIXCatalog.CoreCD
       MsixPackageDisplayName: MSIX Catalog Core (CD)
       MsixManifest: msix.catalog.package.core\package.appxmanifest
-    Channel_CORE_PROD:
+      MsixBuildMode: SideLoadOnly
+	Channel_CORE_PROD:
       Solution: msix.catalog.core.sln
       Channel_Name: CORE_PROD
       DistURL: https://not/used
@@ -45,7 +48,7 @@ strategy:
       MsixPackageId: 18656RidoMin.MSIXCatalog
       MsixPackageDisplayName: MSIX Catalog Core
       MsixManifest: msix.catalog.package.core\package.appxmanifest
-
+      MsixBuildMode: CI
 steps:
 - script: nbgv cloud -c
   displayName: Set Version
@@ -66,7 +69,7 @@ steps:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    msbuildArguments: '/restore /p:AppxPackageSigningEnabled=false;GenerateAppInstallerFile=true;AppxPackageDir=$(Build.ArtifactStagingDirectory)/AppxPackages;AppInstallerUri=$(DistURL)'
+    msbuildArguments: '/restore /p:AppxPackageSigningEnabled=false;GenerateAppInstallerFile=true;AppxPackageDir=$(Build.ArtifactStagingDirectory)/AppxPackages;AppInstallerUri=$(DistURL);UapAppxPackageBuildMode=$(MsixBuildMode)'
   displayName: 'Building..'
   
 - task: PublishBuildArtifacts@1
