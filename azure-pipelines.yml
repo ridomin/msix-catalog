@@ -9,7 +9,7 @@ pool:
 variables:
   solution: 'msix.catalog.net.sln'
   solutioncore: 'msix.catalog.core.sln'
-  buildPlatform: 'Any CPU'
+  buildPlatform: 'x86'
   buildConfiguration: 'Release'
 
 steps:
