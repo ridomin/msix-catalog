@@ -20,14 +20,14 @@ strategy:
       MsixPublisherId: CN=RidoTheDev
       MsixPackageId: MSIXCatalog.CD
       MsixPackageDisplayName: MSIX Catalog (CD)
-	Channel_FX_PROD:
+    Channel_FX_PROD:
       Solution: 'msix.catalog.net.sln'
       Channel_Name: FX_PROD
       DistURL: https://not/used
       MsixPublisherId: CN=FD784322-3D44-4DA4-9F73-0E23D5DF0893
       MsixPackageId: 18656RidoMin.MSIXCatalog
       MsixPackageDisplayName: MSIX Catalog (CD)
-	Channel_CORE_CD:
+    Channel_CORE_CD:
       Solution: 'msix.catalog.core.sln'
       Channel_Name: CORE_CD
       DistURL: https://msixcatalog.azurewebsites.net/netcore3
