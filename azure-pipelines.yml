@@ -23,3 +23,8 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     msbuildArguments: '/restore /p:AppxPackageSigningEnabled=false;GenerateAppInstallerFile=false'
+
+ - task: PublishPipelineArtifact@0
+    inputs:
+      artifactName: $(solution)
+      targetPath: '$(build.artifactstagingdirectory)'
