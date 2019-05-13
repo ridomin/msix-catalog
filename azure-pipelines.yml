@@ -60,3 +60,6 @@ steps:
     ArtifactName: 'drop'
     publishLocation: 'Container'
   displayName: 'Publishing..'
+
+- script: dotnet tool uninstall -g nbgv
+  displayName: Set Version
