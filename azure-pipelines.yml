@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
 
 pool:
-  vmImage: 'win-latest'
+  vmImage: 'windows-latest'
 
 variables:
   solution: 'msix.catalog.net.sln'
