@@ -36,7 +36,7 @@ strategy:
       MsixPublisherId: CN=RidoTheDev
       MsixPackageId: MSIXCatalog.CoreCD
       MsixPackageDisplayName: MSIX Catalog Core (CD)
-	  MsixManifest:msix.catalog.package.core\package.appxmanifest
+      MsixManifest: msix.catalog.package.core\package.appxmanifest
     Channel_CORE_PROD:
       Solution: msix.catalog.core.sln
       Channel_Name: CORE_PROD
@@ -44,7 +44,7 @@ strategy:
       MsixPublisherId: CN=FD784322-3D44-4DA4-9F73-0E23D5DF0893
       MsixPackageId: 18656RidoMin.MSIXCatalog
       MsixPackageDisplayName: MSIX Catalog Core
-	  MsixManifest:msix.catalog.package.core\package.appxmanifest
+      MsixManifest: msix.catalog.package.core\package.appxmanifest
 
 steps:
 - script: nbgv cloud -c
