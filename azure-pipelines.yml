@@ -22,6 +22,7 @@ strategy:
       MsixPackageDisplayName: MSIX Catalog (CD)
       MsixManifest: msix.catalog.package.net\package.appxmanifest
       MsixBuildMode: SideLoadOnly
+      MsixGenerateAppInstaller: true
     Channel_FX_PROD:
       Solution: msix.catalog.net.sln
       Channel_Name: FX_PROD
@@ -31,6 +32,7 @@ strategy:
       MsixPackageDisplayName: MSIX Catalog (CD)
       MsixManifest: msix.catalog.package.net\package.appxmanifest
       MsixBuildMode: CI
+      MsixGenerateAppInstaller: false
     Channel_CORE_CD:
       Solution: msix.catalog.core.sln
       Channel_Name: CORE_CD
@@ -40,6 +42,7 @@ strategy:
       MsixPackageDisplayName: MSIX Catalog Core (CD)
       MsixManifest: msix.catalog.package.core\package.appxmanifest
       MsixBuildMode: SideLoadOnly
+      MsixGenerateAppInstaller: true
     Channel_CORE_PROD:
       Solution: msix.catalog.core.sln
       Channel_Name: CORE_PROD
@@ -49,6 +52,8 @@ strategy:
       MsixPackageDisplayName: MSIX Catalog Core
       MsixManifest: msix.catalog.package.core\package.appxmanifest
       MsixBuildMode: CI
+      MsixGenerateAppInstaller: false
+
 steps:
 - script: nbgv cloud -c
   displayName: Set Version
