@@ -94,12 +94,14 @@ namespace msix.catalog.app.ViewModels
         public void CopyToClipboard(PackageInfoViewModel package)
         {
             StringBuilder ClipboardText = new StringBuilder();
-            ClipboardText.Append(package.PackageInfo.Id + Environment.NewLine);
-            ClipboardText.Append(package.PackageInfo.Version + Environment.NewLine);
-            ClipboardText.Append(package.PackageInfo.Architecture + Environment.NewLine);
-            ClipboardText.Append(package.PackageInfo.Author + Environment.NewLine);
-            ClipboardText.Append(package.PackageInfo.InstalledDate + Environment.NewLine);
-            ClipboardText.Append(package.PackageInfo.InstallLocation + Environment.NewLine);
+            ClipboardText.AppendLine(package.PackageInfo.Id);
+            ClipboardText.AppendLine(package.PackageInfo.Version);
+            ClipboardText.AppendLine (package.PackageInfo.Architecture);
+            ClipboardText.AppendLine(package.PackageInfo.Author);
+            ClipboardText.AppendLine(package.PackageInfo.InstalledDate.ToString());
+            ClipboardText.AppendLine(package.PackageInfo.InstallLocation);
+            ClipboardText.AppendLine(package.PackageInfo.PackageFullName);
+            ClipboardText.AppendLine(package.PackageInfo.PackageName);
 
             Clipboard.SetText(ClipboardText.ToString());
         }
