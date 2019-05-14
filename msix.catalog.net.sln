@@ -5,8 +5,10 @@ VisualStudioVersion = 16.0.28726.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{54FD8F69-0C9B-43E6-B67D-6F7AEEA52B97}"
 	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
 		nuget.config = nuget.config
 		UpdateManifest.ps1 = UpdateManifest.ps1
+		version.json = version.json
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "msix.catalog.lib", "msix.catalog.lib\msix.catalog.lib.csproj", "{33A9BE42-B6C5-431C-BAC6-541D693BB121}"
