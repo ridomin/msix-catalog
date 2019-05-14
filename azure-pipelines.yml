@@ -16,7 +16,7 @@ strategy:
     Channel_FX_CD:
       Solution: msix.catalog.net.sln
       Channel_Name: FX_CD
-      DistURL: https://msixcatalog.azurewebsites.net/AppxPackages
+      DistURL: https://msix-catalog.azurewebsites.net/FX
       MsixPublisherId: CN=RidoTheDev
       MsixPackageId: MSIXCatalog.CD
       MsixPackageDisplayName: MSIX Catalog (CD)
@@ -36,7 +36,7 @@ strategy:
     Channel_CORE_CD:
       Solution: msix.catalog.core.sln
       Channel_Name: CORE_CD
-      DistURL: https://msixcatalog.azurewebsites.net/netcore3
+      DistURL: https://msix-catalog.azurewebsites.net/NC3
       MsixPublisherId: CN=RidoTheDev
       MsixPackageId: MSIXCatalog.CoreCD
       MsixPackageDisplayName: MSIX Catalog Core (CD)
