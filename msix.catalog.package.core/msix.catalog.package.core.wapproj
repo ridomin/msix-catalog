@@ -42,6 +42,7 @@
     <AppInstallerUpdateFrequency>1</AppInstallerUpdateFrequency>
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <AppxBundle>Always</AppxBundle>
     <EntryPointProjectUniqueName>..\msix.catalog.app\msix.catalog.app.core.csproj</EntryPointProjectUniqueName>
   </PropertyGroup>
   <ItemGroup>
