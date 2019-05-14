@@ -209,6 +209,8 @@ namespace msix.catalog.lib
 
         public static string ProductVersion => FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).ProductVersion;
 
+        public static string AssemblyVersionInfo = ThisAssembly.AssemblyInformationalVersion;
+
         public static string GetDotNetInfo()
         {
             string result = "";

@@ -36,34 +36,14 @@
   <PropertyGroup>
     <ProjectGuid>42cd17c5-9f44-4279-80c8-5e6615ad29a4</ProjectGuid>
     <TargetPlatformVersion>10.0.17763.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <GenerateAppInstallerFile>True</GenerateAppInstallerFile>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppInstallerUpdateFrequency>1</AppInstallerUpdateFrequency>
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
-    <PackageCertificateThumbprint>9B49D183108CEA06463256C3AA5BF20F6D03F6D0</PackageCertificateThumbprint>
-    <AppInstallerUri>https://msix-catalog.azurewebsites.net/netcore3</AppInstallerUri>
+    <AppxBundle>Always</AppxBundle>
     <EntryPointProjectUniqueName>..\msix.catalog.app\msix.catalog.app.core.csproj</EntryPointProjectUniqueName>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
-    <AppxBundle>Never</AppxBundle>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <AppxBundle>Never</AppxBundle>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <AppxBundle>Never</AppxBundle>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <AppxBundle>Never</AppxBundle>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
-    <AppxBundle>Never</AppxBundle>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <AppxBundle>Never</AppxBundle>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -75,10 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\msix.catalog.app\msix.catalog.app.core.csproj">
-      <DesktopBridgeSelfContained>False</DesktopBridgeSelfContained>
-      <DesktopBridgeIdentifier>
-      </DesktopBridgeIdentifier>
-      <Properties>DesktopBridgeSelfContained=%(DesktopBridgeSelfContained);DesktopBridgeIdentifier=%(DesktopBridgeIdentifier)</Properties>
       <SkipGetTargetFrameworkProperties>True</SkipGetTargetFrameworkProperties>
     </ProjectReference>
   </ItemGroup>
