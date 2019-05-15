@@ -112,7 +112,7 @@ namespace msix.catalog.lib
             }
         }
 
-        public static string DotNetFlavor => typeof(string).Assembly.Location;
+        public static string DotNetFlavor => $"{typeof(object).Assembly.Location} \r\n [{typeof(object).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion}]";
 
         public static string SignatureKind => OSVersionHelper.WindowsVersionHelper.HasPackageIdentity ? Package.Current.SignatureKind.ToString() : "";
 

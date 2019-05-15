@@ -29,7 +29,7 @@ strategy:
       DistURL: https://not/used
       MsixPublisherId: CN=FD784322-3D44-4DA4-9F73-0E23D5DF0893
       MsixPackageId: 18656RidoMin.MSIXCatalog
-      MsixPackageDisplayName: MSIX Catalog (CD)
+      MsixPackageDisplayName: MSIX Catalog
       MsixManifest: msix.catalog.package.net\package.appxmanifest
       MsixBuildMode: CI
       MsixGenerateAppInstaller: false
