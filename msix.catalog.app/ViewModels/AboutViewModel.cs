@@ -43,5 +43,6 @@ namespace msix.catalog.app.ViewModels
         public string DotNetFlavor => ThisAppVersionInfo.DotNetFlavor;
         public string InstalledFrom => ThisAppVersionInfo.AppInstallerUri;
         public string SignatureKind => ThisAppVersionInfo.SignatureKind;
+        public string AssemblyVersionInfo => ThisAppVersionInfo.AssemblyVersionInfo;
     }
 }

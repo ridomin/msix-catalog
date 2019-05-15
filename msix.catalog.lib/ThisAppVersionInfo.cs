@@ -112,7 +112,7 @@ namespace msix.catalog.lib
             }
         }
 
-        public static string DotNetFlavor => typeof(string).Assembly.Location;
+        public static string DotNetFlavor => $"{typeof(object).Assembly.Location} \r\n [{typeof(object).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion}]";
 
         public static string SignatureKind => OSVersionHelper.WindowsVersionHelper.HasPackageIdentity ? Package.Current.SignatureKind.ToString() : "";
 
@@ -208,6 +208,8 @@ namespace msix.catalog.lib
         }
 
         public static string ProductVersion => FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).ProductVersion;
+
+        public static string AssemblyVersionInfo = ThisAssembly.AssemblyInformationalVersion;
 
         public static string GetDotNetInfo()
         {

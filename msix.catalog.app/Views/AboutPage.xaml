@@ -32,8 +32,8 @@
                Source="{Binding AppLogo}" Width="44" Height="44" />-->
 
         <TextBlock Text="MSIX Catalog" Grid.Row="0" FontSize="20" HorizontalAlignment="Left" Margin="5"/>
-
-        <StackPanel Grid.Row="1"  Orientation="Vertical" Margin="10" HorizontalAlignment="Left">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" CanContentScroll="True" Grid.Row="1">
+            <StackPanel   Orientation="Vertical" Margin="10" HorizontalAlignment="Left">
             <StackPanel Orientation="Vertical" Margin="5">
                 <TextBlock Text="Version: " FontSize="16"/>
                 <TextBlock Text="{Binding VersionString}" FontSize="16" AutomationProperties.AutomationId="LabelVersion"/>
@@ -42,6 +42,10 @@
                    <TextBlock Text="{Binding GitHubProjectUrl}" />
                 </Hyperlink>        
                 </TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="Assembly Version: "/>
+                <TextBlock Text="{Binding AssemblyVersionInfo}"  />
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="5">
                 <TextBlock Text="Publisher: "/>
@@ -83,6 +87,6 @@
                 <TextBlock Text="{Binding  Metadata}" />
             </Border>
         </StackPanel>
-
+        </ScrollViewer>
     </Grid>
 </Page>
