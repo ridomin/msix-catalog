@@ -36,7 +36,6 @@ namespace msix.catalog.app.ViewModels
         public string PublisherDisplayName => ThisAppVersionInfo.PublisherDisplayName;
         public string InstallLocation => ThisAppVersionInfo.InstallLocation;
         public string VersionString => ThisAppVersionInfo.VersionString;
-        public string MyVersion => ThisAppVersionInfo.MyVersion;
         public string Metadata => ThisAppVersionInfo.Metadata;
         public string StoreInfo => ThisAppVersionInfo.StoreInfo;
         public string InstalledOn => ThisAppVersionInfo.InstalledOn.Humanize();

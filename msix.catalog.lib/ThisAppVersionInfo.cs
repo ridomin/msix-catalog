@@ -24,7 +24,7 @@ namespace msix.catalog.lib
             return "Not Packaged";
         }
 
-        public static string InstallLocation => System.Reflection.Assembly.GetCallingAssembly().Location;
+        public static string InstallLocation => System.Reflection.Assembly.GetEntryAssembly().Location;
         public static string VersionString => GetSafePackageVersion();
 
         private static string GetSafePackageVersion()
@@ -46,8 +46,6 @@ namespace msix.catalog.lib
             }
             return result;
         }
-
-        public static string MyVersion => Assembly.GetCallingAssembly().GetName().FullName;
 
         public static string Metadata => GetSafeMetadata();
         private static string GetSafeMetadata()
