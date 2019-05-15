@@ -1,0 +1,8 @@
+﻿<Project>
+  <PropertyGroup>
+    <TargetFramework>Foo</TargetFramework>
+  </PropertyGroup>
+  <Import Project="msix.catalog.app.core.csproj" />
+  <Import Project="Properties\PublishProfiles\FolderProfile.pubxml" />
+  
+</Project>
