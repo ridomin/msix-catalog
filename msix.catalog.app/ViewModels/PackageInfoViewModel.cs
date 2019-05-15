@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
+using System.Windows;
 using System.Windows.Input;
 using msix.catalog.app.Mvvm;
 using msix.catalog.lib;
@@ -13,6 +15,7 @@ namespace msix.catalog.app.ViewModels
         public ICommand OpenCommand { get; private set; }
         public ICommand ViewManifestCommand { get; private set; }
         public ICommand OpenFolderCommand { get; private set; }
+        public ICommand CopyToClipboardCommand { get; private set; }
 
         public ICommand NavigateToInstallLocationCommand { get; private set; }
 
@@ -28,6 +31,7 @@ namespace msix.catalog.app.ViewModels
             ViewManifestCommand = new DelegateCommand<PackageInfoViewModel>(ViewManifest);
             OpenFolderCommand = new DelegateCommand<PackageInfoViewModel>(OpenFolder);
             NavigateToInstallLocationCommand = new DelegateCommand<PackageInfoViewModel>(NavigateToInstallLocation, (o) => { return packageInfo.AppInstallerUri != null; });
+            CopyToClipboardCommand = new DelegateCommand<PackageInfoViewModel>(CopyToClipboard);
         }
 
         private void NavigateToInstallLocation(PackageInfoViewModel p)
@@ -85,6 +89,21 @@ namespace msix.catalog.app.ViewModels
             App.TelemetryClient.TrackEvent("OpenFolder",
                 new Dictionary<string, string> { { "FolderToOpen", package.PackageInfo.InstallLocation } },
                 null);
+        }
+
+        public void CopyToClipboard(PackageInfoViewModel package)
+        {
+            StringBuilder ClipboardText = new StringBuilder();
+            ClipboardText.AppendLine(package.PackageInfo.Id);
+            ClipboardText.AppendLine(package.PackageInfo.Version);
+            ClipboardText.AppendLine (package.PackageInfo.Architecture);
+            ClipboardText.AppendLine(package.PackageInfo.Author);
+            ClipboardText.AppendLine(package.PackageInfo.InstalledDate.ToString());
+            ClipboardText.AppendLine(package.PackageInfo.InstallLocation);
+            ClipboardText.AppendLine(package.PackageInfo.PackageFullName);
+            ClipboardText.AppendLine(package.PackageInfo.PackageName);
+
+            Clipboard.SetText(ClipboardText.ToString());
         }
     }
 }
