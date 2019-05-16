@@ -1,4 +1,5 @@
-﻿using System;
+﻿using msix.catalog.app.Telemetry;
+using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -49,7 +50,7 @@ namespace msix.catalog.app
             }
             catch (Exception ex)
             {
-                App.TelemetryClient.TrackException(ex);
+                DiagnosticsClient.TrackException(ex);
                 System.Windows.MessageBox.Show(ex.Message);
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
             }

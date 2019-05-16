@@ -1,4 +1,5 @@
-﻿using System;
+﻿using msix.catalog.app.Telemetry;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace msix.catalog.app.Navigation
 
         public static bool Navigate(Uri sourcePageUri, object extraData = null)
         {
-            App.TelemetryClient.TrackPageView(sourcePageUri.ToString());
+            DiagnosticsClient.TrackPageView(sourcePageUri.ToString());
 
             if (_frame.CurrentSource != sourcePageUri)
             {
@@ -41,7 +42,7 @@ namespace msix.catalog.app.Navigation
         {
             if (_frame.CanGoBack)
             {
-                App.TelemetryClient.TrackEvent("GoBack");
+                DiagnosticsClient.TrackEvent("GoBack");
                _frame.GoBack();
             }
         }

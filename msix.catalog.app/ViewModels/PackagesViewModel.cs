@@ -1,4 +1,5 @@
 ﻿using msix.catalog.app.Mvvm;
+using msix.catalog.app.Telemetry;
 using msix.catalog.lib;
 using System;
 using System.Collections.Generic;
@@ -75,7 +76,7 @@ namespace msix.catalog.app.ViewModels
                     }
                     else
                     {
-                        App.TelemetryClient.TrackTrace("App not categorized: " + item.PFN);
+                        DiagnosticsClient.TrackTrace("App not categorized: " + item.PFN);
                         System.Diagnostics.Debug.WriteLine("skipping: " + item.PFN);
                     }
                 }
