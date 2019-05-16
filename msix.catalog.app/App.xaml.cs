@@ -20,7 +20,9 @@ namespace msix.catalog.app
     /// </summary>
     public partial class App : Application
     {
-        public static Stopwatch Clock = Stopwatch.StartNew();
+        Stopwatch Clock = Stopwatch.StartNew();
+
+        internal static TimeSpan StartupTime;
 
         public App()
         {
@@ -31,10 +33,12 @@ namespace msix.catalog.app
 
         private void App_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
+            StartupTime = Clock.Elapsed;
             Clock.Stop();
+
             DiagnosticsClient.TrackEvent("StartupPerf", 
-                new Dictionary<string, string> { { "DeploymentType", ThisAppVersionInfo.GetDeploymentType()}}, 
-                new Dictionary<string, double>{{ "startupTime", Clock.ElapsedMilliseconds}});
+                new Dictionary<string, string> { { "DeploymentType", ThisAppVersionInfo.GetDeploymentType()}, { "NetFlavor", ThisAppVersionInfo.GetDotNetInfo()} }, 
+                new Dictionary<string, double>{{ "startupTime", StartupTime.TotalMilliseconds}});
         }
     }
 }

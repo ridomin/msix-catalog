@@ -29,7 +29,7 @@ namespace msix.catalog.app
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             Navigation.Navigation.Navigate(new Uri("Views/MainPage.xaml", UriKind.RelativeOrAbsolute));
-            ((ShellViewModel)this.DataContext).StartUpTime = App.Clock.Elapsed.Humanize(2, false);
+            ((ShellViewModel)this.DataContext).StartUpTime = App.StartupTime.Humanize(2, false);
             this.Title += $"{ThisAppVersionInfo.ProductVersion} [{ThisAppVersionInfo.GetDeploymentType()}] [{ThisAppVersionInfo.GetDotNetInfo()}]";
         }
 
