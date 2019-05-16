@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Input;
 using msix.catalog.app.Mvvm;
+using msix.catalog.app.Telemetry;
 using msix.catalog.lib;
 
 namespace msix.catalog.app.ViewModels
@@ -58,7 +59,7 @@ namespace msix.catalog.app.ViewModels
         {
             uint res = PackageActivator.StartApp(package.PackageInfo.PFN);
 
-            App.TelemetryClient.TrackEvent("OpenApp",
+            DiagnosticsClient.TrackEvent("OpenApp",
                 new Dictionary<string, string> { { "AppToOpen", package.PackageInfo.PFN }, { "opened", (res>0).ToString()} },
                 null);
         }
@@ -73,7 +74,7 @@ namespace msix.catalog.app.ViewModels
                 FileName = manifestUri.AbsoluteUri
             };
             Process.Start(psi);
-            App.TelemetryClient.TrackEvent("ViewManifest",
+            DiagnosticsClient.TrackEvent("ViewManifest",
                 new Dictionary<string, string> { { "ManifestToOpen", manifestPath } },
                 null);
         }
@@ -86,7 +87,7 @@ namespace msix.catalog.app.ViewModels
                 FileName = package.PackageInfo.InstallLocation
             };
             Process.Start(psi);
-            App.TelemetryClient.TrackEvent("OpenFolder",
+            DiagnosticsClient.TrackEvent("OpenFolder",
                 new Dictionary<string, string> { { "FolderToOpen", package.PackageInfo.InstallLocation } },
                 null);
         }
