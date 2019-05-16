@@ -88,7 +88,7 @@ namespace msix.catalog.app.ViewModels
             {
                 int numStorePackages = _cachedListOfPackages.Where(p => p.SignatureKind == "Store" && p.IsFramework==false).Count();
                 int numFrameworkPackages = _cachedListOfPackages.Where(p => p.IsFramework == true).Count();
-                int numSideloadPackages = _cachedListOfPackages.Where(p => p.SignatureKind == "Developer").Count();
+                int numSideloadPackages = _cachedListOfPackages.Where(p => p.SignatureKind == "Developer" && p.IsFramework==false).Count();
                 int numDevPackages = _cachedListOfPackages.Where(p => p.SignatureKind == "None").Count();
                 return $"{numStorePackages} apps from the Store, {numFrameworkPackages} framework packages, {numSideloadPackages} sideloaded and {numDevPackages} in development.";
             }
@@ -98,7 +98,7 @@ namespace msix.catalog.app.ViewModels
         {
             get
             {
-                var sideloadedPackages = _cachedListOfPackages.Where(p => p.SignatureKind == "Developer");
+                var sideloadedPackages = _cachedListOfPackages.Where(p => p.SignatureKind == "Developer" && p.IsFramework==false);
                 int numSideloadPackages = sideloadedPackages.Count();
                 int numPublishers = sideloadedPackages
                                     .Select(p => p.Author)

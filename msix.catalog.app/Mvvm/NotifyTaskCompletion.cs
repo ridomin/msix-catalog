@@ -23,8 +23,9 @@ namespace msix.catalog.app.Mvvm
             {
                 await task;
             }
-            catch
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
             var propertyChanged = PropertyChanged;
             if (propertyChanged == null)
