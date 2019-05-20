@@ -44,6 +44,7 @@
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <AppInstallerUpdateFrequency>1</AppInstallerUpdateFrequency>
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
+    <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

@@ -67,7 +67,7 @@
                                 Grid.Row="0"/>
         <StatusBar Grid.Row="1">
             <StatusBarItem>Startup time:</StatusBarItem>
-            <StatusBarItem Content="{Binding StartUpTime}" />
+            <StatusBarItem x:Name="statusBarTimeElapsed" />
         </StatusBar>
 
     </Grid>

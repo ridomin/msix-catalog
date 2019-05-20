@@ -26,14 +26,7 @@ namespace msix.catalog.app.ViewModels
                 return _cachedListOfPackages.Count().ToString();
             }
         }
-        private string startupTime = string.Empty;
-
-        public string StartUpTime
-        {
-            get => startupTime;
-            set => SetProperty(ref startupTime, value);
-        }
-
+      
         public ShellViewModel()
         {
             // Build the menus
