@@ -59,7 +59,7 @@ strategy:
       MsixGenerateAppInstaller: false
 
 steps:
- - script: |
+  - script: |
       dotnet tool install --tool-path . nbgv
       .\nbgv cloud -p src -a
   displayName: Set build number
