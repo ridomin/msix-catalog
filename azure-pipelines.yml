@@ -63,7 +63,7 @@ steps:
   displayName: Install .NET Core SDK
   inputs:
     packageType: sdk
-    version: 3.0.100
+    version: '3.0.100-preview8-013656'
 - script: dotnet --info
   displayName: Show dotnet SDK info
 
