@@ -69,7 +69,7 @@ steps:
 
 - script: |
       dotnet tool install --tool-path . nbgv
-      .\nbgv cloud -p .
+      .\nbgv cloud -c
   displayName: Set build number
 
 - powershell: |
