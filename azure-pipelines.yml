@@ -59,9 +59,10 @@ strategy:
       MsixGenerateAppInstaller: false
 
 steps:
-- script: dotnet tool install -g nbgv
-- script: nbgv cloud -c
-  displayName: Set Version
+ - script: |
+      dotnet tool install --tool-path . nbgv
+      .\nbgv cloud -p src -a
+  displayName: Set build number
 
 - powershell: |
     # Update appxmanifest. This must be done before build.
