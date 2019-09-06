@@ -75,8 +75,8 @@ steps:
     arguments: install --tool-path . nbgv
   displayName: Install NBGV tool
 
-  - script: nbgv cloud -c -a
-    displayName: Set Version
+- script: nbgv cloud -c -a
+  displayName: Set Version
 
 - powershell: |
     # Update appxmanifest. This must be done before build.
