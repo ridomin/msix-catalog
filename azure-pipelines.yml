@@ -69,11 +69,11 @@ steps:
   displayName: Show dotnet SDK info
 
 - task: DotNetCoreCLI@2
-    inputs:
-      command: custom
-      custom: tool
-      arguments: install --tool-path . nbgv
-    displayName: Install NBGV tool
+  inputs:
+    command: custom
+    custom: tool
+    arguments: install --tool-path . nbgv
+  displayName: Install NBGV tool
 
   - script: nbgv cloud -c -a
     displayName: Set Version
