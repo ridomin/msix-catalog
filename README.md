@@ -14,7 +14,7 @@ The purpose of this app is to explore different "Desktop Modernization" technolo
 
 ### Sideload packages are signed with a developer certificate
 
-> Install [Cert Central](https://certcentral.x509.online/) Client (aka ccc) with `dotnet tool install -g dotnet-ccc` (requires .NET Core 2.1 SDK)
+> Install [X509Online CLI](https://x509online.azurewebsites.net) Client (aka ccc) with `dotnet tool install -g dotnet-ccc` (requires .NET Core 2.1 SDK)
 
 Sideloaded packages are signed with a different certificates for AppCenter and WebApps, to install these certs you must trust the signer by running the next command from an elevated command prompt: 
 
